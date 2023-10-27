@@ -1,11 +1,10 @@
 #ifndef ASISTENCIAS_H
 #define ASISTENCIAS_H
+#include "Cliente.h"
+#include "Clases.h"
 
 
-class Asistencias
-{
-public:
-    Asistencias();
-};
 
-#endif // ASISTENCIAS_H
+
+
+#endif
