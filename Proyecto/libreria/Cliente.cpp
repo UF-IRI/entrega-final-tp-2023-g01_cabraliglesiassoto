@@ -6,25 +6,69 @@
 
 int Leer_Cliente_Archivo(sCliente *&cliente, string filename){
     ifstream file (filename);
+
     if (!file.is_open()) {
         return 1;
     }
-    string header;
-    getline(file, header); // leo el header del archivo .csv y lo guardo en un auxiliar
-    char coma;
+
     int N=1;
-    while (file.good()){
-        file >> cliente->id_cliente >> coma >> cliente->Apellido >> coma >> cliente->Nombre >> coma >> cliente->mail >>
-        coma >> cliente->fechaNacimiento >> coma >>cliente->stoi(saldo);
-        resize (cliente, N);
+    char coma=',';
+    stringstream ss;
+    string primera_linea, aux,aux_nombre,aux_id,aux_apellido, aux_mail,aux_fechanc, aux_telefono, aux_saldo;
+
+    ifstream Archivo;
+    Archivo.open(filename);
+
+
+    if(!Archivo.is_open())
+    {
+        cout<<"Error al abrir archivo" <<endl;
+        return -1;
     }
-    file.close();
+
+    getline(Archivo,primera_linea);
+
+    while(Archivo){
+
+        getline(ss,aux,coma);
+        ss<<aux;
+
+        getline(ss,aux_id,coma);
+        cliente[N-1].id_cliente=aux_id;
+
+        getline(ss,aux_nombre,coma);
+        cliente[N-1].Nombre=aux_nombre;
+
+        getline(ss,aux_apellido,coma);
+        cliente[N-1].Apellido=aux_apellido;
+
+        getline(ss,aux_mail,coma);
+        cliente[N-1].mail=aux_mail;
+
+        getline(ss,aux_telefono,coma);
+        cliente[N-1].telefono=aux_telefono;
+
+        getline(ss,aux_fechanc,coma);
+        cliente[N-1].fechaNacimiento=aux_fechanc;
+
+        getline(ss,aux_saldo,coma);
+        cliente[N-1].saldo= stoi(aux_saldo);
+
+        resize(cliente,N);
+
+    }
+
+    Archivo.close();
+    return 0;
+
+
+
 }
 
 void resize (sCliente *& vector, int &N){
     N=(N)+1;
     sCliente *aux= new sCliente[N];
-    for (int i=0, i< N-1, i++){
+    for (int i=0; i< N-1; i++){
         aux [i]=vector[i];
     }
     delete[] vector;
