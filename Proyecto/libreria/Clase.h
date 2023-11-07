@@ -1,33 +1,31 @@
 #ifndef CLASE_H
 #define CLASE_H
 #include <iostream>
-#include<time.h>
-#include <string>
-#include <fstream>
-#include <sstream> // hacer variable tipo
+#include <ctime>
 #include "Cliente.h"
 
 using namespace std;
 typedef unsigned int uint;
 
-enum sala {bicis,siri,camillas,gim1,gim2,box} ;
+enum sala {bicis,siri,camillas,gim1,gim2,box};
+typedef enum sala eSala;
 enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30};
+typedef enum cupo_max eCupo_max;
 
-struct sClase{
+typedef struct{
     uint id_clase;
     string clase_nombre;
     uint  cupo_max;
     sala cod_sala;
     uint horario;
+} sClase;
 
-};
-
- bool estado_sala;
- uint horario[]={8,9,10,11,12,13,14,15,16,17,18,19};
+//bool estado_sala;
+//uint horario[]={8,9,10,11,12,13,14,15,16,17,18,19};
 
 
  // Archivos
- void Leer_Clase_Archivo( sClase *& CLASE,  ifstream Archivo);
+ void LeerClaseArchivo(sClase *& CLASE/*, ifstream &Archivo*/);
  void resize(sClase *& CLASE , uint &n );
 
 
