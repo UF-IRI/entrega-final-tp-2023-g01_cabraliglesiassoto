@@ -28,6 +28,7 @@ void Leer_Clase_Archivo( sClase *& CLASE,string filename){
         CLASE[N-1].id_clase=stoi(aux_id);
         getline(ss,aux_nombre,coma);
         CLASE[N-1].clase_nombre=aux_nombre;
+
         getline(ss,aux_horario,coma);
         CLASE[N-1].horario=stoi(aux_horario);
 

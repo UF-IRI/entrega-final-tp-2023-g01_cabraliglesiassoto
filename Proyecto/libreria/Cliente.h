@@ -23,10 +23,12 @@ struct Cliente {
 }; typedef struct  Cliente sCliente;
 
 
+
 void Leer_Cliente_Archivo();
 
-void consultar_estado(int saldo);
-
+int Leer_Cliente_Archivo(sCliente *cliente, string filename);
+void resize (sCliente *& vector, int &N);
+void consultar_saldo(int saldo);
 
 
 #endif
