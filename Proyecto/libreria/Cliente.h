@@ -24,7 +24,8 @@ struct Cliente {
 
 
 void Leer_Cliente_Archivo();
-void consultar_saldo(int saldo);
+
+void consultar_estado(int saldo);
 
 
 

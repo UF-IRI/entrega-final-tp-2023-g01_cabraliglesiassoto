@@ -11,13 +11,13 @@ using namespace std;
 typedef unsigned int uint;
 
 enum sala {bicis,siri,camillas,gim1,gim2,box} ;
-enum cupo_max { cupo};
+enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30};
 
 struct sClase{
     uint id_clase;
     string clase_nombre;
-   // uint  cupo_max;
-  //  sala cod_sala;
+    uint  cupo_max;
+    sala cod_sala;
     uint horario;
 
 };
@@ -27,8 +27,7 @@ struct sClase{
 
 
  // Archivos
-
- int Leer_Clase_Archivo( sClase *& CLASE);
+ void Leer_Clase_Archivo( sClase *& CLASE,string filename);
  void resize(sClase *& CLASE , uint &n );
 
 
@@ -45,9 +44,8 @@ void ReservarTurno2(sClase clase, sCliente client, uint horario );
 void CancelarTurno2(sClase clase, sCliente client, uint horario);
 
 
+
 void Listar_Alumnos(sClase clase);
-
-
 
 
 #endif // CLASE_H

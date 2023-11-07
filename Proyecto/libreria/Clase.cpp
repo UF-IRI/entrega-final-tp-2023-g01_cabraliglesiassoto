@@ -1,7 +1,7 @@
 #include <Clase.h>
 
 
-int Leer_Clase_Archivo( sClase *& CLASE){
+void Leer_Clase_Archivo( sClase *& CLASE,string filename){
 
     uint N=1;
     char coma=',';
@@ -9,13 +9,13 @@ int Leer_Clase_Archivo( sClase *& CLASE){
     string primera_linea, aux,aux_nombre,aux_id,aux_horario;
 
     ifstream Archivo;
-    Archivo.open("iriClasesGYM.csv");
+    Archivo.open(filename);
 
 
     if(!Archivo.is_open())
     {
         cout<<"Error al abrir archivo" <<endl;
-        return -1;
+       // return -1;
     }
 
     getline(Archivo,primera_linea);
@@ -27,7 +27,7 @@ int Leer_Clase_Archivo( sClase *& CLASE){
         getline(ss,aux_id,coma);
         CLASE[N-1].id_clase=stoi(aux_id);
         getline(ss,aux_nombre,coma);
-        CLASE[N-1].clase_nombre;
+        CLASE[N-1].clase_nombre=aux_nombre;
         getline(ss,aux_horario,coma);
         CLASE[N-1].horario=stoi(aux_horario);
 
@@ -36,7 +36,7 @@ int Leer_Clase_Archivo( sClase *& CLASE){
     }
 
     Archivo.close();
-    return 0;
+    //return 0;
 
 }
 
