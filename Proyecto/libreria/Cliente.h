@@ -1,6 +1,8 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <string>
+#include <fstream>
+#include <sstream> // hacer variable tipo
 
 
 typedef unsigned int uint;
@@ -21,7 +23,7 @@ struct Cliente {
 }; typedef struct  Cliente sCliente;
 
 
-
+void Leer_Cliente_Archivo();
 void consultar_saldo(int saldo);
 
 
