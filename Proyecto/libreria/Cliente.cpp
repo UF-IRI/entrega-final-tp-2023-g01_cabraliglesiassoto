@@ -3,8 +3,8 @@
 #include <time.h>
 #include <fstream>
 #include <sstream>
-
-int Leer_Cliente_Archivo(sCliente *&cliente, ifstream Archivo){
+/*
+int LeerClienteArchivo(sCliente *&cliente, ifstream Archivo){
 
     int N=1;
     char coma=',';
@@ -25,7 +25,7 @@ int Leer_Cliente_Archivo(sCliente *&cliente, ifstream Archivo){
 
     while(Archivo){
 
-        getline(ss,aux,coma);
+        getline(ss,aux);
         ss<<aux;
 
         getline(ss,aux_id,coma);
@@ -60,7 +60,7 @@ int Leer_Cliente_Archivo(sCliente *&cliente, ifstream Archivo){
 
 }
 
-void resize (sCliente *& vector, int &N){
+void resize_cliente (sCliente *& vector, int &N){
     N=(N)+1;
     sCliente *aux= new sCliente[N];
     for (int i=0; i< N-1; i++){
@@ -69,3 +69,4 @@ void resize (sCliente *& vector, int &N){
     delete[] vector;
     vector = aux;
 }
+*/

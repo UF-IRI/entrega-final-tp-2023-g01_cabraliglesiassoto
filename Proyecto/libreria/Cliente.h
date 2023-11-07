@@ -24,10 +24,11 @@ struct Cliente {
 
 
 
-//void Leer_Cliente_Archivo();
+/*void LeerClienteArchivo();
 
-int Leer_Cliente_Archivo(sCliente *cliente,   ifstream Archivo);
-void resize (sCliente *& vector, int &N);
+int LeerClienteArchivo(sCliente *cliente,   ifstream Archivo);
+void resize_cliente (sCliente *& vector, int &N);
+*/
 void consultar_saldo(int saldo);
 
 

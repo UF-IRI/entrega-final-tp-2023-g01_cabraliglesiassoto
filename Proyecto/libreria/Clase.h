@@ -15,8 +15,8 @@ typedef enum cupo_max eCupo_max;
 typedef struct{
     uint id_clase;
     string clase_nombre;
-    uint  cupo_max;
-    sala cod_sala;
+  //  uint  cupo_max;
+ //   sala cod_sala;
     uint horario;
 } sClase;
 
@@ -25,16 +25,12 @@ typedef struct{
 
 
  // Archivos
- void LeerClaseArchivo(sClase *& CLASE/*, ifstream &Archivo*/);
- void resize(sClase *& CLASE , uint &n );
+int LeerClaseArchivo(sClase *& CLASE, ifstream &Archivo);
+ void resize_clase(sClase *& CLASE , int &n );
 
 
 bool Comprobar_sala(bool estado_sala, sala cod_sala, sClase clase );
 bool Comprobar_horario(sClase clase, sCliente cliente);
-
-
-// si usabamos tiempo ... podiamos usar esta
-void ReservarTurno(sClase clase, sCliente client, tm horario );
 
 
 // con tiempo en uint;

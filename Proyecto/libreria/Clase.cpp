@@ -2,11 +2,11 @@
 
 
 
-void resize(sClase *& CLASE , uint &n ){
+void resize_clase( sClase *& CLASE , int &n ){
 
     n=(n)+1;
     sClase *aux= new sClase[n];
-    for(uint i=0;i<n-1;i++)
+    for(int i=0;i<n-1;i++)
     {
         aux[i]= CLASE[i];
 
@@ -14,12 +14,12 @@ void resize(sClase *& CLASE , uint &n ){
     delete[] CLASE;
     CLASE=aux;
 
-
 }
 
-void LeerClaseArchivo(sClase *&CLASE/*, ifstream& Archivo*/)
+
+int LeerClaseArchivo(sClase *&CLASE, ifstream& Archivo)
 {
-    uint N=1;
+    int N=1;
     char coma=',';
     stringstream ss;
     string primera_linea, aux,aux_nombre,aux_id,aux_horario;
@@ -27,16 +27,15 @@ void LeerClaseArchivo(sClase *&CLASE/*, ifstream& Archivo*/)
     //    ifstream Archivo;
     //    Archivo.open(filename);
 
-    /*
     if(!Archivo.is_open()) {
         cout<<"Error al abrir archivo" <<endl;
-        // return -1;
+        return -1;
     }
 
     getline(Archivo,primera_linea);
 
     while(Archivo){
-        getline(ss,aux,',');
+        getline(ss,aux);
         ss<<aux;
         getline(ss,aux_id,coma);
         CLASE[N-1].id_clase=stoi(aux_id);
@@ -46,8 +45,9 @@ void LeerClaseArchivo(sClase *&CLASE/*, ifstream& Archivo*/)
         getline(ss,aux_horario,coma);
         CLASE[N-1].horario=stoi(aux_horario);
 
-        resize(CLASE,N);
+        resize_clase(CLASE,N);
+    }
 
-    }*/
-    //return 0;
+    return 0;
+
 }
