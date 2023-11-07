@@ -27,7 +27,7 @@ struct sClase{
 
 
  // Archivos
- void Leer_Clase_Archivo( sClase *& CLASE,string filename);
+ void Leer_Clase_Archivo( sClase *& CLASE,  ifstream Archivo);
  void resize(sClase *& CLASE , uint &n );
 
 

@@ -26,7 +26,7 @@ struct Cliente {
 
 void Leer_Cliente_Archivo();
 
-int Leer_Cliente_Archivo(sCliente *cliente, string filename);
+int Leer_Cliente_Archivo(sCliente *cliente,   ifstream Archivo);
 void resize (sCliente *& vector, int &N);
 void consultar_saldo(int saldo);
 

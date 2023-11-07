@@ -1,23 +1,18 @@
 #include "Cliente.h"
 #include <iostream>
-#include<time.h>
+#include <time.h>
 #include <fstream>
 #include <sstream>
 
-int Leer_Cliente_Archivo(sCliente *&cliente, string filename){
-    ifstream file (filename);
-
-    if (!file.is_open()) {
-        return 1;
-    }
+int Leer_Cliente_Archivo(sCliente *&cliente, ifstream Archivo){
 
     int N=1;
     char coma=',';
     stringstream ss;
     string primera_linea, aux,aux_nombre,aux_id,aux_apellido, aux_mail,aux_fechanc, aux_telefono, aux_saldo;
 
-    ifstream Archivo;
-    Archivo.open(filename);
+
+//    Archivo.open(filename);
 
 
     if(!Archivo.is_open())

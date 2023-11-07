@@ -4,8 +4,12 @@
 
 int main() {
 
+    //Abrir archivo ....
+
+    ifstream Archivo;
+    Archivo.open("iriClasesGYM.csv");
     sClase* CLASE = new sClase[1];
-    Leer_Clase_Archivo(CLASE,"iriClasesGYM.csv");
+    Leer_Clase_Archivo(CLASE, Archivo);
 
 
 
@@ -13,5 +17,9 @@ int main() {
 
 
     delete[] CLASE;
+    Archivo.close();
     return 0;
 }
+
+
+

@@ -1,15 +1,15 @@
 #include <Clase.h>
 
 
-void Leer_Clase_Archivo( sClase *& CLASE,string filename){
+void Leer_Clase_Archivo( sClase *& CLASE,  ifstream Archivo){
 
     uint N=1;
     char coma=',';
     stringstream ss;
     string primera_linea, aux,aux_nombre,aux_id,aux_horario;
 
-    ifstream Archivo;
-    Archivo.open(filename);
+//    ifstream Archivo;
+//    Archivo.open(filename);
 
 
     if(!Archivo.is_open())
@@ -36,7 +36,7 @@ void Leer_Clase_Archivo( sClase *& CLASE,string filename){
 
     }
 
-    Archivo.close();
+
     //return 0;
 
 }
