@@ -1,5 +1,5 @@
 #include <Clase.h>
-
+#include <Asistencia.h>
 
 void resize(sClase *& CLASE , int &n );
 
@@ -39,6 +39,29 @@ int main() {
 
     delete[] CLASE;
     Archivo.close();
+// estructuras para probar funciones
+
+    sClase clase_p; sCliente cliente_p; sAsistencia asistencia_p;
+
+    // inicializo los structs a mano (los datos los saqué de el PDF que explica los archivos)
+    //Clase
+    clase_p.clase_nombre = "Spinning";
+    clase_p.id_clase = 1;
+    clase_p.horario=8;
+    //Cliente
+    cliente_p.id_cliente="1";
+    cliente_p.Nombre="Agustín";
+    cliente_p.Apellido="Guerra";
+    cliente_p.mail="AgustinGuerra@bolandia.iri";
+    cliente_p.telefono="462-185-1730";
+    cliente_p.fechaNacimiento="10-12-1966";
+    cliente_p.saldo=0;
+    //Asistencia
+    asistencia_p.id_cliente="1";
+    asistencia_p.cant_inscriptos=5;
+    asistencia_p.inscripciones->id_clase="1";
+    asistencia_p.inscripciones->fecha=1032093211;
+    //fin structs prueba
     return 0;
 }
 
