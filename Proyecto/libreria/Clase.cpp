@@ -44,10 +44,29 @@ int LeerClaseArchivo(sClase *&CLASE, ifstream& Archivo)
 
         getline(ss,aux_horario,coma);
         CLASE[N-1].horario=stoi(aux_horario);
+        CLASE[N-1].cupo_max= CupoMaximoStruct(CLASE[N-1].clase_nombre);
+
 
         resize_clase(CLASE,N);
     }
 
     return 0;
 
+}
+
+
+eCupo_max CupoMaximoStruct(string nombre_clase){
+
+
+   /* switch(nombre_clase)
+    case "spinning":
+        return spinn;
+    case "yoga" : return yoga;
+    case"pilates": return pilates;
+    case"stretching": return stretching;
+    case"zumba": return zumba;
+    case"boxeo ": return boxeo;
+*/
+
+    return boxeo;
 }

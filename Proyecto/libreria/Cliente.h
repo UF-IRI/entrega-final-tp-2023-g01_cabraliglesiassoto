@@ -23,13 +23,12 @@ struct Cliente {
 }; typedef struct  Cliente sCliente;
 
 
+    //Archivo Cliente
 
-/*void LeerClienteArchivo();
-
-int LeerClienteArchivo(sCliente *cliente,   ifstream Archivo);
+int LeerClienteArchivo(sCliente *cliente, ifstream Archivo); // Leo y lleno struct, aplicarun random para asistencia,cancelac y ausenc
 void resize_cliente (sCliente *& vector, int &N);
-*/
-void consultar_saldo(int saldo);
 
-
+    // Otras funciones
+bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve falso
+    //void ControlSaldo(int saldo);
 #endif

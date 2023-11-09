@@ -3,8 +3,6 @@
 
 void resize(sClase *& CLASE , int &n );
 
-
-
 int main() {
 
     ifstream Archivo("iriClasesGYM.csv");
@@ -65,8 +63,6 @@ int main() {
     return 0;
 }
 
-
-
 void resize( sClase *& CLASE , int &n ){
 
     n=(n)+1;
@@ -80,3 +76,66 @@ void resize( sClase *& CLASE , int &n ){
     CLASE=aux;
 
 }
+
+
+/* Menu
+ *
+ *  int opcion;
+
+    cout << "acceder como: " << endl;
+    cout << "1_ administrador." << endl;
+    cout << "2_ alumno." << endl;
+
+    cin >> opcion;
+
+    if (opcion == 1 || opcion == 2)
+    {
+        switch (opcion)
+        {
+        case 1: admin_menu(); break;
+
+        case 2: alumno_menu; break;
+
+        }
+    }
+    else
+    {
+
+        cout << "opcion no valida" << endl;
+
+    }
+
+    return 0;
+}
+
+void alumno_menu();
+
+ * 1-Reservar Turno
+ * 2-Cancelar Turno
+ * 4-Salir
+ *
+ *
+ *
+ * 1-Elegir Clase
+ *  1-S
+ *  2-Box
+ *  3-etc
+ *
+ *
+ *
+ * 2-Menu Box
+ *  imprimirHorario(Box );
+ *  cin>> horario;
+ *int  ReservaClase( Asistencia, Inscripcion );
+ *
+ *
+ *   ReservaClase== 1 Reserva exitosa, tiene clase horario , el dia ... .
+ *   "" == 2; Error en la reserva
+ *   ""==  3; Cupo maximo o no es el horario indicado
+ *
+ *
+ * /
+
+
+
+*/

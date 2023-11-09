@@ -15,31 +15,37 @@ typedef enum cupo_max eCupo_max;
 typedef struct{
     uint id_clase;
     string clase_nombre;
-  //  uint  cupo_max;
- //   sala cod_sala;
     uint horario;
+    eCupo_max  cupo_max;
+    //   sala cod_sala;
 } sClase;
-
-//bool estado_sala;
-//uint horario[]={8,9,10,11,12,13,14,15,16,17,18,19};
 
 
  // Archivos
-int LeerClaseArchivo(sClase *& CLASE, ifstream &Archivo);
+int LeerClaseArchivo(sClase *& CLASE, ifstream &Archivo); // leo archivo y lleno struct
  void resize_clase(sClase *& CLASE , int &n );
-
+eCupo_max CupoMaximoStruct(string nombre_clase); // sirve para llenar cupo max al struct
+ //Alumnos
 
 bool Comprobar_sala(bool estado_sala, sala cod_sala, sClase clase );
-bool Comprobar_horario(sClase clase, sCliente cliente);
+//bool Comprobar_horario(sClase clase, sCliente cliente);
 
-
-// con tiempo en uint;
-void ReservarTurno2(sClase clase, sCliente client, uint horario );
-void CancelarTurno2(sClase clase, sCliente client, uint horario);
-
-
-
-void Listar_Alumnos(sClase clase);
 
 
 #endif // CLASE_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//bool estado_sala;
+//uint horario[]={8,9,10,11,12,13,14,15,16,17,18,19};

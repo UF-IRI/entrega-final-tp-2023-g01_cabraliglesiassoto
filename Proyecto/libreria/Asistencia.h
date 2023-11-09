@@ -16,3 +16,22 @@ struct Asistencia {
 }; typedef struct  Asistencia sAsistencia;
 
 #endif // ASISTENCIA_H
+
+void ListarAlumnosporClase(sClase *clase, sCliente *cliente, sAsistencia *asistencia); // crea un archivo de los alumnos que se inscriben a la clase.
+int ReservaClase( sAsistencia *asisten, sClase *clase, sCliente *cliente );
+
+
+    /* Necesitamos idCliente idClase
+     *  Cliente saldo positivo , no reserve dos clases en el mismo horario o en la misma clase.
+     *  Clase horario coincida con el idClase y el nombre
+     *  Si dos personas reservan al mismo horario y justo cupomax, priorizo horario(fecha) o cant_ausencia.
+
+    Cliente
+    if (Clienteestado()==false)
+      return valor;
+
+
+
+
+
+}*/

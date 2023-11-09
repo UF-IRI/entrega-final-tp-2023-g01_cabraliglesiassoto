@@ -3,7 +3,7 @@
 #include <time.h>
 #include <fstream>
 #include <sstream>
-/*
+
 int LeerClienteArchivo(sCliente *&cliente, ifstream Archivo){
 
     int N=1;
@@ -49,7 +49,10 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream Archivo){
         getline(ss,aux_saldo,coma);
         cliente[N-1].saldo= stoi(aux_saldo);
 
-        resize(cliente,N);
+
+       // aplicarun random para asistencia,cancelac y ausenc
+
+        resize_cliente(cliente,N);
 
     }
 
@@ -69,4 +72,4 @@ void resize_cliente (sCliente *& vector, int &N){
     delete[] vector;
     vector = aux;
 }
-*/
+
