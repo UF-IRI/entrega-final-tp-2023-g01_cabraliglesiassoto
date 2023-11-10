@@ -2,24 +2,7 @@
 
 
 
-void resize_clase( sClase *& clase , uint &n ){
 
-    if(clase==nullptr){
-        if(n==0){
-            clase = new sClase[++n];
-        }
-        return;
-    }
-
-    sClase* aux = new sClase[++n];
-
-    for(uint i = 0; i < n-1; i++)
-        aux[i] = clase[i];
-
-    delete[] clase;
-    clase= aux;
-
-}
 
 
 /*int LeerClaseArchivo(sClase *&CLASE, ifstream& Archivo)
@@ -59,7 +42,7 @@ void resize_clase( sClase *& clase , uint &n ){
 
 
 
-int LeerClaseArchivo( ifstream &Archivo, sClase *&CLASE, uint &N){
+int LeerClaseArchivo(ifstream &Archivo, sClase *&clase, uint &n){
 
     stringstream ss;
     string primera_linea, linea;//aux,aux_nombre,aux_id,aux_horario;
@@ -77,21 +60,37 @@ int LeerClaseArchivo( ifstream &Archivo, sClase *&CLASE, uint &N){
 
         ss.clear();
         ss<<linea;
-        resize_clase(CLASE,N);
+        resize_clase(clase,n);
 
         getline(ss,linea,',');
-        CLASE[N-1].id_clase= linea;
+        clase[n-1].id_clase= linea;
         getline(ss,linea,',');
-        CLASE[N-1].clase_nombre=linea;
+        clase[n-1].clase_nombre=linea;
         getline(ss,linea);
-        CLASE[N-1].horario=stof(linea);
+        clase[n-1].horario=stof(linea);
 
-        CLASE[N-1].cupo_max=spinn; //arbitrario por el momento
-
-
-
-}
+        clase[n-1].cupo_max=spinn; //arbitrario por el momento
+    }
     return 0;
+}
+
+void resize_clase( sClase *& clase , uint &n ){
+
+    if(clase==nullptr){
+        if(n==0){
+            clase = new sClase[++n];
+        }
+        return;
+    }
+
+    sClase* aux = new sClase[++n];
+
+    for(uint i = 0; i < n-1; i++)
+        aux[i] = clase[i];
+
+    delete[] clase;
+    clase= aux;
+
 }
 
 /*eCupo_max CupoMaximoStruct(string nombre_clase){

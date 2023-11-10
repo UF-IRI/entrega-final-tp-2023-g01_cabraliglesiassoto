@@ -1,14 +1,13 @@
-#include <Clase.h>
-#include <Asistencia.h>
+#include "Asistencia.h"
 
 void resize(sClase *& CLASE , uint &n );
 
 int main() {
 
-    ifstream Archivo("iriClasesGYM.csv");
-    sClase* CLASE = nullptr;
-    uint N=0;
-    LeerClaseArchivo(Archivo,CLASE,N);
+    ifstream archi("iriClasesGYM.csv");
+    sClase* clase = nullptr;
+    uint n=0;
+    LeerClaseArchivo(archi, clase, n);
 /*
     stringstream ss;
     string primera_linea, linea;//aux,aux_nombre,aux_id,aux_horario;
@@ -60,9 +59,9 @@ int main() {
 
 
 
-    cout<< CLASE[5].clase_nombre<< endl;
-    delete[] CLASE;
-    Archivo.close();
+    cout<< clase[5].clase_nombre<< endl;
+    delete[] clase;
+    archi.close();
     return 0;
 
     }

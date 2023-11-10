@@ -2,6 +2,7 @@
 #define CLASE_H
 #include <iostream>
 #include <ctime>
+#include <fstream>
 #include "Cliente.h"
 
 using namespace std;
@@ -22,8 +23,8 @@ typedef struct{
 
 
  // Archivos
-int LeerClaseArchivo( ifstream &Archivo,sClase *& CLASE,uint &n); // leo archivo y lleno struct
- void resize_clase(sClase *& CLASE , int &n );
+void resize_clase(sClase *& CLASE , uint &n );
+int LeerClaseArchivo(ifstream &Archivo, sClase *&clase, uint &n); // leo archivo y lleno struct
 eCupo_max CupoMaximoStruct(string nombre_clase); // sirve para llenar cupo max al struct
  //Alumnos
 
