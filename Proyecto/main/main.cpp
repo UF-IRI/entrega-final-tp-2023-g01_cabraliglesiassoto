@@ -42,13 +42,13 @@ int main() {
     cout<< CLASE->clase_nombre[2];
     delete[] CLASE;
     Archivo.close();
-/*
+
     ifstream infile("asistencias_1697673600000.dat", ios::binary);
     if (!infile.is_open()) {
         cout << "Error opening binary file" << endl;
         return 1;
     }
-    infile.close();*/
+    infile.close();
     return 0;
 }
 
