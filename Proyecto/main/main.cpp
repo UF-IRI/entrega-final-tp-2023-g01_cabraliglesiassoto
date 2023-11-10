@@ -31,7 +31,6 @@ int main() {
         CLASE[N].id_clase=stoi(aux_id);
         getline(ss,aux_nombre,coma);
         CLASE[N].clase_nombre=aux_nombre;
-
         getline(ss,aux_horario);
         CLASE[N].horario=stoi(aux_horario);
 
