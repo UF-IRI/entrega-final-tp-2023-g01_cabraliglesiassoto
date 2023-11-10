@@ -5,7 +5,7 @@ void resize(sClase *& CLASE , uint &n );
 
 int main() {
 
-    ifstream Archivo("iriClasesGYM.csv");
+    ifstream Archivo("iriClasesGYMsm.csv");
     sClase* CLASE = nullptr;
     uint N=0;
     char coma=',';
