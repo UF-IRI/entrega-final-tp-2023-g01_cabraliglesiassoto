@@ -12,7 +12,7 @@ int main() {
     stringstream ss;
     string primera_linea, aux,aux_nombre,aux_id,aux_horario;
 
-    // LeerClaseArchivo(CLASE/*, Archivo*/);
+    // LeerClaseArchivo(CLASE, Archivo);
 
     if(!Archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
@@ -42,7 +42,13 @@ int main() {
     cout<< CLASE->clase_nombre[2];
     delete[] CLASE;
     Archivo.close();
-
+/*
+    ifstream infile("asistencias_1697673600000.dat", ios::binary);
+    if (!infile.is_open()) {
+        cout << "Error opening binary file" << endl;
+        return 1;
+    }
+    infile.close();*/
     return 0;
 }
 

@@ -13,9 +13,9 @@ enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30
 typedef enum cupo_max eCupo_max;
 
 typedef struct{
-    uint id_clase;
+    int id_clase;
     string clase_nombre;
-    uint horario;
+    int horario;
     eCupo_max  cupo_max;
     //   sala cod_sala;
 } sClase;
