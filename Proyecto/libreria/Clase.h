@@ -13,16 +13,16 @@ enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30
 typedef enum cupo_max eCupo_max;
 
 typedef struct{
-    int id_clase;
+    string id_clase;
     string clase_nombre;
-    int horario;
+    float horario;
     eCupo_max  cupo_max;
     //   sala cod_sala;
 } sClase;
 
 
  // Archivos
-int LeerClaseArchivo(sClase *& CLASE, ifstream &Archivo); // leo archivo y lleno struct
+int LeerClaseArchivo( ifstream &Archivo,sClase *& CLASE,uint &n); // leo archivo y lleno struct
  void resize_clase(sClase *& CLASE , int &n );
 eCupo_max CupoMaximoStruct(string nombre_clase); // sirve para llenar cupo max al struct
  //Alumnos

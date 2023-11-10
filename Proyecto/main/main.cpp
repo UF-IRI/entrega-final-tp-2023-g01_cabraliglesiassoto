@@ -5,14 +5,15 @@ void resize(sClase *& CLASE , uint &n );
 
 int main() {
 
-    ifstream Archivo("iriClasesGYMsm.csv");
+    ifstream Archivo("iriClasesGYM.csv");
     sClase* CLASE = nullptr;
     uint N=0;
-    char coma=',';
+    LeerClaseArchivo(Archivo,CLASE,N);
+/*
     stringstream ss;
-    string primera_linea, aux,aux_nombre,aux_id,aux_horario;
+    string primera_linea, linea;//aux,aux_nombre,aux_id,aux_horario;
 
-    // LeerClaseArchivo(CLASE, Archivo);
+    //
 
     if(!Archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
@@ -20,36 +21,53 @@ int main() {
     }
 
     getline(Archivo,primera_linea);
+    while(!Archivo.eof()&& getline(Archivo,linea)){
+
+
+       ss.clear();
+       ss<<linea;
+       resize(CLASE,N);
+
+       getline(ss,linea,',');
+       CLASE[N-1].id_clase= linea;
+       getline(ss,linea,',');
+       CLASE[N-1].clase_nombre=linea;
+       getline(ss,linea);
+       CLASE[N-1].horario=stof(linea);
+
+       CLASE[N-1].cupo_max=spinn; // arbitrario por el momento
+
+
+*/
+
+      /*getline(Archivo,primera_linea);
+
+    while()
 
     while(Archivo){
-        ss.clear();
+       ss.clear();
         getline(ss,aux);
         ss<<aux;
 
         resize(CLASE,N);
         getline(ss,aux_id,coma);
-        CLASE[N].id_clase=stoi(aux_id);
+        CLASE[N].id_clase=aux_id;
         getline(ss,aux_nombre,coma);
         CLASE[N].clase_nombre=aux_nombre;
         getline(ss,aux_horario);
-        CLASE[N].horario=stoi(aux_horario);
+        CLASE[N].horario=stof(aux_horario);}
+*/
 
 
-    }
 
-
-    cout<< CLASE->clase_nombre[2];
+    cout<< CLASE[5].clase_nombre<< endl;
     delete[] CLASE;
     Archivo.close();
-
-    ifstream infile("asistencias_1697673600000.dat", ios::binary);
-    if (!infile.is_open()) {
-        cout << "Error opening binary file" << endl;
-        return 1;
-    }
-    infile.close();
     return 0;
-}
+
+    }
+
+
 
 void resize( sClase *& clase , uint &n ){
 
@@ -64,24 +82,20 @@ void resize( sClase *& clase , uint &n ){
     CLASE=aux;
 */
     if(clase==nullptr){
-        if(n==0){
-            clase = new sClase[++n];
-        }
-        return;
+       if(n==0){
+           clase = new sClase[++n];
+       }
+       return;
     }
 
     sClase* aux = new sClase[++n];
 
     for(uint i = 0; i < n-1; i++)
-        aux[i] = clase[i];
+       aux[i] = clase[i];
 
     delete[] clase;
     clase= aux;
 }
-
-
-
-
 
 
 
