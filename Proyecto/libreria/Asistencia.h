@@ -19,6 +19,7 @@ struct Asistencia {
 
 void ListarAlumnosporClase(sClase *clase, sCliente *cliente, sAsistencia *asistencia); // crea un archivo de los alumnos que se inscriben a la clase.
 int ReservaClase( sAsistencia *asisten, sClase *clase, sCliente *cliente );
+void LeerArchivoAsist(sAsistencia *&asist, ifstream &archivo );
 
 
     /* Necesitamos idCliente idClase

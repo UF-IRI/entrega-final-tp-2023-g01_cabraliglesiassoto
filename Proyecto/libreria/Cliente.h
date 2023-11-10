@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <sstream> // hacer variable tipo
-
+#include <iostream>
 
 typedef unsigned int uint;
 using namespace std;

@@ -46,7 +46,7 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream Archivo){
         getline(ss,aux_fechanc,coma);
         cliente[N-1].fechaNacimiento=aux_fechanc;
 
-        getline(ss,aux_saldo,coma);
+        getline(ss,aux_saldo);
         cliente[N-1].saldo= stoi(aux_saldo);
 
 

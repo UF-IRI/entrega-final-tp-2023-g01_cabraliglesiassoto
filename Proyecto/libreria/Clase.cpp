@@ -42,7 +42,7 @@ int LeerClaseArchivo(sClase *&CLASE, ifstream& Archivo)
         getline(ss,aux_nombre,coma);
         CLASE[N-1].clase_nombre=aux_nombre;
 
-        getline(ss,aux_horario,coma);
+        getline(ss,aux_horario);
         CLASE[N-1].horario=stoi(aux_horario);
         CLASE[N-1].cupo_max= CupoMaximoStruct(CLASE[N-1].clase_nombre);
 
@@ -54,9 +54,7 @@ int LeerClaseArchivo(sClase *&CLASE, ifstream& Archivo)
 
 }
 
-
 eCupo_max CupoMaximoStruct(string nombre_clase){
-
 
    /* switch(nombre_clase)
     case "spinning":
@@ -67,6 +65,5 @@ eCupo_max CupoMaximoStruct(string nombre_clase){
     case"zumba": return zumba;
     case"boxeo ": return boxeo;
 */
-
     return boxeo;
 }
