@@ -69,7 +69,7 @@ void resize_cliente (sCliente *& cliente, uint &n){
 
 
 
-uint stingtouint(string texto)
+uint stringtouint(string texto)
 {
 
     uint resultado=0;

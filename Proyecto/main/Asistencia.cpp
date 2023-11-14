@@ -90,3 +90,12 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
     inscrip= aux;
 }
 
+int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
+    // habria que llamar al resize aca ?
+    //resize_asistencia (asisten,n); // que n usamos ?
+    //resize_inscriptos (asisten->inscripciones,n);
+    asisten->id_cliente = cliente->id_cliente;
+    asisten->inscripciones->id_clase = clase->id_clase;
+    //asisten->inscripciones->fecha = fecha de la reserva, como lo asignamos ?
+    //asisten->cant_inscriptos = hay que generar un contador con la cantidad de inscriptos y restarlo al cupo
+}
