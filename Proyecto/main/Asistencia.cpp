@@ -5,10 +5,8 @@
 void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
     stringstream ss;
     string primera_linea, linea;
-    char c;
+    string c;
     char coma=',';
-
-
 
     if(!archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
@@ -34,23 +32,25 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
 
        // while(ss>>'{' && corchete != '}'){ // si es corchete de entrada y no es la salida , recorrer in for.
 
+        asist[n-1].inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
 
-            asist->inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
-          while(c!='}'){
+
             for (uint j = 0; j < asist[n-1].cant_inscriptos; j++) {
                 getline(ss,linea,'(');
                 getline(ss,linea , ',');
-                asist->inscripciones[j].id_clase=linea;
+                asist[n-1].inscripciones[j].id_clase=linea;
                 getline(ss,linea ,')');
-                asist->inscripciones[j].fecha=linea;
-                ss.get(c);
+                asist[n-1].inscripciones[j].fecha=linea;
+
+
             }
 
+         //getline(ss,linea,'}');
         }
 
     }
 
-}
+
             /*
             resize_inscriptos(inscrip,tam);
             for( j=0; j<tam; j++){
