@@ -2,11 +2,12 @@
 
 
 
-void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInscripciones *&inscrip ){
+void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
     stringstream ss;
     string primera_linea, linea;
-    char corchete='{';
+    char c;
     char coma=',';
+
 
 
     if(!archivo.is_open()) {
@@ -25,38 +26,52 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInsc
         getline(ss,linea,coma);
         asist[n-1].id_cliente=linea;
         getline(ss,linea,coma);
-        asist[n-1].cant_inscriptos=stringtouint(linea);
+        asist[n-1].cant_inscriptos=stringtouint(linea);  // hasta aca todo bien, problema al llenar struct inscripciones.
+
+        getline(ss,linea,'{');
+
+       // uint tam=asist[n-1].cant_inscriptos;
+
+       // while(ss>>'{' && corchete != '}'){ // si es corchete de entrada y no es la salida , recorrer in for.
 
 
-        while(ss>>corchete && corchete != '}'){ // si es corchete de entrada y no es la salida , recorrer in for.
+            asist->inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
+          while(c!='}'){
+            for (uint j = 0; j < asist[n-1].cant_inscriptos; j++) {
+                getline(ss,linea,'(');
+                getline(ss,linea , ',');
+                asist->inscripciones[j].id_clase=linea;
+                getline(ss,linea ,')');
+                asist->inscripciones[j].fecha=linea;
+                ss.get(c);
+            }
 
-            for(uint j=0; j<asist[n-1].cant_inscriptos; j++){
+        }
 
-            resize_inscriptos(inscrip,j);
+    }
+
+}
+            /*
+            resize_inscriptos(inscrip,tam);
+            for( j=0; j<tam; j++){
 
             getline(ss,linea,'(');
-            cout<<linea;
             inscrip[j-1].id_clase= linea;
             getline(ss,linea,coma);  // paso de string a time_t, con libreria ctime en el pdf de clase habia funcion mktime :D
-            cout<<"hola"+linea;
+            cout<<inscrip[j-1].id_clase<<endl;
+
             inscrip[j-1].fecha= linea;
             getline(ss,linea,')');
 
-          /*  struct tm timeinfo;
+            struct tm timeinfo;
             strptime(linea.c_str(),"%s",&timeinfo);
             time_t aux_time= mktime(&timeinfo);
             inscrip[j-1].fecha=aux_time;     }*/
 
            // TENGO PROBLEMAS PQ EN EL FORMATO DE BINARIO ES
             // 20, 3, {(12, 109029092), (12, 109029323), (30, 1032093211)}  COMO TENGO EN CUENTA LOS {{ }} CON UN CICLO WHILE ??
-            }
 
 
-    }
-
-    }
-
-}
 void resize_asistencia(sAsistencia *&asist,uint &n){
 
     if(asist==nullptr){
@@ -94,8 +109,8 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
     inscrip= aux;
 }
 
-/*
-int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
+
+/*int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
     // habria que llamar al resize aca ?
     //resize_asistencia (asisten,n); // que n usamos ?
     //resize_inscriptos (asisten->inscripciones,n);
@@ -104,3 +119,5 @@ int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
     //asisten->inscripciones->fecha = fecha de la reserva, como lo asignamos ?
     //asisten->cant_inscriptos = hay que generar un contador con la cantidad de inscriptos y restarlo al cupo
 }*/
+
+

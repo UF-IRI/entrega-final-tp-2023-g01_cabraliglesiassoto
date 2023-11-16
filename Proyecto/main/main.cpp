@@ -11,7 +11,7 @@ int main() {
     sClases* clase = nullptr;
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
-    sInscripciones *inscrip=nullptr;
+
     uint n=0,j=0,k=0;
 
     LeerClaseArchivo(archivo_clase,clase, n);
@@ -24,13 +24,12 @@ int main() {
 
 
     archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
-    LeerAsistenciaArchivo(asistencia,archivo_asistencia,j,inscrip);
-    cout<< asistencia[4].cant_inscriptos<<endl; // pruebo cant
+    LeerAsistenciaArchivo(asistencia,archivo_asistencia,j);
+   // pruebo cant
     archivo_asistencia.close();
-
-    cout<< asistencia[2].id_cliente+"hola"<<endl;
-
-
+     cout<< asistencia[0].cant_inscriptos<<endl;
+     cout<< asistencia[2].id_cliente+"hola"<<endl;
+     cout<< asistencia->inscripciones[2].id_clase+"hola"<<endl;
 
 
 
