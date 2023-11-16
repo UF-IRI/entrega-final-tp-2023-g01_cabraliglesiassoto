@@ -27,9 +27,7 @@ int main() {
     LeerAsistenciaArchivo(asistencia,archivo_asistencia,j);
    // pruebo cant
     archivo_asistencia.close();
-     cout<< asistencia[0].cant_inscriptos<<endl;
-     cout<< asistencia[2].id_cliente+"hola"<<endl;
-     cout<< asistencia->inscripciones[2].id_clase+"hola"<<endl;
+
 
 
 

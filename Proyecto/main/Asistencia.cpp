@@ -5,7 +5,6 @@
 void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
     stringstream ss;
     string primera_linea, linea;
-    string c;
     char coma=',';
 
     if(!archivo.is_open()) {
@@ -28,10 +27,8 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
 
         getline(ss,linea,'{');
 
-       // uint tam=asist[n-1].cant_inscriptos;
 
-        //asist[n-1].inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
-
+    // reserva memoria para inscripciones
 
             for (uint j = 1; j < asist[n-1].cant_inscriptos; j++) {
 
@@ -61,8 +58,9 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
             inscrip[j-1].fecha= linea;
             getline(ss,linea,')');
 
+
             struct tm timeinfo;
-            strptime(linea.c_str(),"%s",&timeinfo);
+            strptime(linea.c_str(),"%s",&timeinfo);     // paso de string a time
             time_t aux_time= mktime(&timeinfo);
             inscrip[j-1].fecha=aux_time;     }*/
 
