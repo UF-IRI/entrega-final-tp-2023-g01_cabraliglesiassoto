@@ -30,26 +30,24 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n ){
 
        // uint tam=asist[n-1].cant_inscriptos;
 
-       // while(ss>>'{' && corchete != '}'){ // si es corchete de entrada y no es la salida , recorrer in for.
-
-        asist[n-1].inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
+        //asist[n-1].inscripciones= new sInscripciones[asist[n-1].cant_inscriptos]; // reserva memoria para inscripciones
 
 
-            for (uint j = 0; j < asist[n-1].cant_inscriptos; j++) {
+            for (uint j = 1; j < asist[n-1].cant_inscriptos; j++) {
+
+                resize_inscriptos(asist[n-1].inscripciones,j );
+
                 getline(ss,linea,'(');
                 getline(ss,linea , ',');
-                asist[n-1].inscripciones[j].id_clase=linea;
+                asist[n-1].inscripciones[j-1].id_clase=linea;
                 getline(ss,linea ,')');
-                asist[n-1].inscripciones[j].fecha=linea;
-
+                asist[n-1].inscripciones[j-1].fecha=linea;
 
             }
 
          //getline(ss,linea,'}');
         }
-
     }
-
 
             /*
             resize_inscriptos(inscrip,tam);
