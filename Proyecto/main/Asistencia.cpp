@@ -23,7 +23,7 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInsc
         getline(ss,linea,coma);
         asist[n-1].id_cliente=linea;
         getline(ss,linea,coma);
-        asist[n-1].cant_inscriptos=stingtouint(linea);
+        asist[n-1].cant_inscriptos=stringtouint(linea);
 
       /*  while(ss>>corchete && corchete != '}'){
 
