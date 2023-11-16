@@ -2,11 +2,12 @@
 
 
 
-void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInscripciones *&inscrip, uint &j ){
+void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInscripciones *&inscrip ){
     stringstream ss;
     string primera_linea, linea;
     char corchete='{';
     char coma=',';
+
 
     if(!archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
@@ -18,6 +19,7 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInsc
 
         ss.clear();
         ss<<linea;
+
         resize_asistencia(asist,n);
 
         getline(ss,linea,coma);
@@ -25,32 +27,34 @@ void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n, sInsc
         getline(ss,linea,coma);
         asist[n-1].cant_inscriptos=stringtouint(linea);
 
-      /*  while(ss>>corchete && corchete != '}'){
 
+        while(ss>>corchete && corchete != '}'){ // si es corchete de entrada y no es la salida , recorrer in for.
 
-
-            for(j; j<cant_inscriptos; j++){
+            for(uint j=0; j<asist[n-1].cant_inscriptos; j++){
 
             resize_inscriptos(inscrip,j);
 
-            getline(ss,linea,coma);
+            getline(ss,linea,'(');
+            cout<<linea;
             inscrip[j-1].id_clase= linea;
             getline(ss,linea,coma);  // paso de string a time_t, con libreria ctime en el pdf de clase habia funcion mktime :D
+            cout<<"hola"+linea;
+            inscrip[j-1].fecha= linea;
+            getline(ss,linea,')');
 
-            struct tm timeinfo;
+          /*  struct tm timeinfo;
             strptime(linea.c_str(),"%s",&timeinfo);
             time_t aux_time= mktime(&timeinfo);
-            inscrip[j-1].fecha=aux_time;
+            inscrip[j-1].fecha=aux_time;     }*/
 
            // TENGO PROBLEMAS PQ EN EL FORMATO DE BINARIO ES
             // 20, 3, {(12, 109029092), (12, 109029323), (30, 1032093211)}  COMO TENGO EN CUENTA LOS {{ }} CON UN CICLO WHILE ??
-
             }
-        }*/
+
 
     }
 
-
+    }
 
 }
 void resize_asistencia(sAsistencia *&asist,uint &n){
@@ -90,6 +94,7 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
     inscrip= aux;
 }
 
+/*
 int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
     // habria que llamar al resize aca ?
     //resize_asistencia (asisten,n); // que n usamos ?
@@ -98,4 +103,4 @@ int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
     asisten->inscripciones->id_clase = clase->id_clase;
     //asisten->inscripciones->fecha = fecha de la reserva, como lo asignamos ?
     //asisten->cant_inscriptos = hay que generar un contador con la cantidad de inscriptos y restarlo al cupo
-}
+}*/

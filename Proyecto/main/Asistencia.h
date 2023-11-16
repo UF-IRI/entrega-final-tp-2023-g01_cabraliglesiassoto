@@ -6,7 +6,7 @@
 
 struct Inscripciones {
     string id_clase;
-    time_t fecha;
+    string fecha; //time_t
 }; typedef struct  Inscripciones sInscripciones;
 
 struct Asistencia {
@@ -18,7 +18,7 @@ struct Asistencia {
 
 //Archivos
 
-void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n , sInscripciones *&inscript, uint &j);
+void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n , sInscripciones *&inscript);
 void resize_asistencia(sAsistencia *&asist,uint &n);
 void resize_inscriptos(sInscripciones *&inscrip ,uint &n);
 

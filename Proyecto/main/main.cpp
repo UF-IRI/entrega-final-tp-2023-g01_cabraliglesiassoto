@@ -1,6 +1,4 @@
 #include "Asistencia.h"
-
-
 using namespace std;
 
 
@@ -14,26 +12,26 @@ int main() {
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
     sInscripciones *inscrip=nullptr;
-    uint n=0,k=0,j=0,m=0;
+    uint n=0,j=0,k=0;
 
     LeerClaseArchivo(archivo_clase,clase, n);
     archivo_clase.close();
-    cout<< clase[7].clase_nombre<< endl; // prueba
 
    // ABRO ARCHIVO CLIENTES
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
     LeerClienteArchivo(cliente,archivo_cliente, k);
     archivo_cliente.close();
 
-    cout<< cliente[2].mail<<endl; // prueba
-
 
     archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
-    LeerAsistenciaArchivo(asistencia,archivo_asistencia,j,inscrip,m);
+    LeerAsistenciaArchivo(asistencia,archivo_asistencia,j,inscrip);
     cout<< asistencia[4].cant_inscriptos<<endl; // pruebo cant
-
-
     archivo_asistencia.close();
+
+    cout<< asistencia[2].id_cliente+"hola"<<endl;
+
+
+
 
 
     delete[]asistencia;
