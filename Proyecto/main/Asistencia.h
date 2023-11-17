@@ -16,9 +16,6 @@ struct Asistencia {
 }; typedef struct  Asistencia sAsistencia;
 
 
-//Archivos
-
-void LeerAsistenciaArchivo(sAsistencia *&asist, ifstream &archivo, uint&n /*, sInscripciones *&inscript*/);
 void resize_asistencia(sAsistencia *&asist,uint &n);
 void resize_inscriptos(sInscripciones *&inscrip ,uint &n);
 void LlenarInscripcion(sInscripciones *&inscript, uint &j );
