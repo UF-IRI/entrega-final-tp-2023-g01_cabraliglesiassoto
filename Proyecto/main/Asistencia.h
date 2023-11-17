@@ -27,10 +27,10 @@ void LlenarInscripcion(sInscripciones *&inscript, uint &j );
 // Reservas y otros
 
 void ListarAlumnosporClase(sClases *clase, sCliente *cliente, sAsistencia *asistencia); // crea un archivo de los alumnos que se inscriben a la clase.
-int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente );
-
-
-
+int ReservaClase(sAsistencia *asisten, sClases *clase, sCliente *cliente );
+void ControlRepetidos(sAsistencia *&a, sClases *&clase, sCliente *&cliente);
+bool ControlFecha(sAsistencia *&a, sClases *& clase );
+void ControlHorario(sAsistencia *&a, sClases *&clase, sCliente *&cliente);
 
     /* Necesitamos idCliente idClase
      *  Cliente saldo positivo , no reserve dos clases en el mismo horario o en la misma clase.
