@@ -116,4 +116,42 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
     //asisten->cant_inscriptos = hay que generar un contador con la cantidad de inscriptos y restarlo al cupo
 }*/
 
+int ReservaClase(sAsistencia *&asisten, sClases *&clase, sCliente *&cliente){
+
+
+    if( cliente->saldo>=0 && asisten->id_cliente == cliente->id_cliente)   //controlo si la cuota esta al dia
+                              // controlo si el horario al que se anoto no es igual
+         // asisten->idclase== clase->id_clase && clase->horario == id
+
+}
+
+
+
+void ControlHorario(sAsistencia *&a, sClases *&clase, sCleinte *&cliente)
+{
+    for(uint i=1;i<a->cant_inscripcion;i++){
+
+         if( a->inscripciones[i-1].id_clase != a->inscripciones[i].id_clase ) // anoto en clases diferentes
+            uint aux1= a->inscripciones[i-1].id_clase;
+            uint aux2=a->inscripciones[i].id_clase;
+
+
+
+
+    }
+}
+
+void ControlRepetidos(sAsistencia *&a, sClases *&clase, sCleinte *&cliente)
+{
+
+         for(uint i=0; i<a->cant_inscripcion; i++)
+         {
+         if (a->inscripciones[i].id_clase == a->inscripciones[i+1].id_clase)
+             // se incribio en una misma clase,
+             // TE BORRO DE LA CLASE
+            cout<<"SE ANOTO mas de una vez" <<endl
+         }
+
+}
+
 

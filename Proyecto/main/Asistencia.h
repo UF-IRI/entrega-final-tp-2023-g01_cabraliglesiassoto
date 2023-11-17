@@ -11,7 +11,7 @@ struct Inscripciones {
 
 struct Asistencia {
     string id_cliente;
-    uint cant_inscriptos;
+    uint cant_inscripcion;
     sInscripciones *inscripciones;
 }; typedef struct  Asistencia sAsistencia;
 
