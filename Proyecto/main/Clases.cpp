@@ -1,11 +1,6 @@
 #include "Clases.h"
 
 
-void imprimir(){
-
-
-    cout<<"prueba de verdad";
-}
 
 void resize_clases(sClases *& clase , uint &n ){
 
@@ -37,7 +32,7 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
 
     }
 
-    getline(archivo,primera_linea);
+    getline(archivo,primera_linea); //leo primer alinea y descarto
     while(!archivo.eof()&& getline(archivo,linea)){
 
 
@@ -58,3 +53,33 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
 
 
 }
+void printClase(sClases *&clases){
+
+    for(uint i=0;i<sizeof(clases);i++)
+    { cout<< clases[i].id_clase<<' '<< clases[i].horario<<' '<< clases[i].cupo_max <<endl;}
+
+}
+
+eCupo_max LlenarCupo(string clase_nombre){
+
+    if (clase_nombre == "Spinning")
+        return spinn;
+    if (clase_nombre == "Yoga")
+        return yoga;
+     if (clase_nombre == "Pilates")
+        return pilates;
+    if (clase_nombre == "Stretching")
+        return stretching;
+     if (clase_nombre == "Zumba")
+        return zumba;
+     if (clase_nombre == "Boxeo")
+        return boxeo;
+    else {
+        cout << "Error: Clase no encontrada." << std::endl;
+        return musculacion; // Puedes devolver un valor por defecto o manejar el error de otra manera.
+    }
+}
+
+
+
+

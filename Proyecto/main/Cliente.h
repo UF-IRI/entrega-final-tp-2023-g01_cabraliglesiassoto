@@ -34,6 +34,6 @@ bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve fals
     //void ControlSaldo(int saldo);
 
 uint stringtouint(string texto);
-
+void printCliente(sCliente *&cliente);
 
 #endif

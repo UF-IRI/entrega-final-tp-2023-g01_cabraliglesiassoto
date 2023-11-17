@@ -24,11 +24,15 @@ int main() {
 
 
     archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
-    LeerAsistenciaArchivo(asistencia,archivo_asistencia,j);
+  //  LeerAsistenciaArchivo(asistencia,archivo_asistencia,j);
    // pruebo cant
     archivo_asistencia.close();
 
 
+    cout<<"cliente"<<sizeof(cliente)<<endl;
+    printCliente(cliente);
+    cout<<"clases"<<sizeof(clase)<<endl;
+    printClase(clase);
 
 
     delete[]asistencia;

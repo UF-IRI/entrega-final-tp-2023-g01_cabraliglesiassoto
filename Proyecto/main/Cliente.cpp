@@ -15,11 +15,9 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
     getline(archivo,primera_linea);
     while(!archivo.eof()&& getline(archivo,linea)){
 
-
         ss.clear();
         ss<<linea;
         resize_cliente(cliente,n);
-
 
         getline(ss,linea,coma);
         cliente[n-1].id_cliente=linea;
@@ -41,8 +39,6 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
 
         getline(ss,linea);
         cliente[n-1].saldo= stoi(linea);
-
-
 
     }
 
@@ -67,8 +63,6 @@ void resize_cliente (sCliente *& cliente, uint &n){
 
 }
 
-
-
 uint stringtouint(string texto)
 {
 
@@ -86,3 +80,11 @@ uint stringtouint(string texto)
 }
 
 
+
+void printCliente(sCliente *&cliente){
+
+   for(uint i=0;i<sizeof(cliente);i++)
+        cout<< cliente[i].id_cliente<<' '<< cliente[i].saldo <<endl;
+
+
+}
