@@ -9,7 +9,7 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
 
     if(!archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
-
+        return 1;
     }
 
     getline(archivo,primera_linea);
@@ -82,8 +82,8 @@ uint stringtouint(string texto)
 
 
 void printCliente(sCliente *&cliente){
-
-   for(uint i=0;i<sizeof(cliente);i++)
+  size_t numCliente =  sizeof(struct Cliente);
+   for(uint i=0;i<numCliente ;i++)
         cout<< cliente[i].id_cliente<<' '<< cliente[i].saldo <<endl;
 
 

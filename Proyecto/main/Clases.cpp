@@ -25,7 +25,7 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
 
     stringstream ss;
     string primera_linea, linea;
-
+    char coma=',';
 
     if(!archivo.is_open()) {
         cout<<"Error al abrir archivo " <<endl;
@@ -40,42 +40,42 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
         ss<<linea;
         resize_clases(clase,n);
 
-        getline(ss,linea,',');
+        getline(ss,linea,coma);
         clase[n-1].id_clase= linea;
-        getline(ss,linea,',');
+        getline(ss,linea,coma);
         clase[n-1].clase_nombre=linea;
         getline(ss,linea);
         clase[n-1].horario=stof(linea);
 
-        clase[n-1].cupo_max=spinn; //arbitrario por el momento
+        clase[n-1].cupo_max=LlenarCupo(clase[n-1].clase_nombre); //arbitrario por el momento
     }
 
 
 
 }
 void printClase(sClases *&clases){
-
-    for(uint i=0;i<sizeof(clases);i++)
+    size_t numClase =  sizeof(struct Clases)-12;
+    for(uint i=0;i<numClase;i++)
     { cout<< clases[i].id_clase<<' '<< clases[i].horario<<' '<< clases[i].cupo_max <<endl;}
 
 }
 
 eCupo_max LlenarCupo(string clase_nombre){
 
-    if (clase_nombre == "Spinning")
+    if (clase_nombre == "Spinning") {
         return spinn;
-    if (clase_nombre == "Yoga")
+    } else if (clase_nombre == "Yoga") {
         return yoga;
-     if (clase_nombre == "Pilates")
+    } else if (clase_nombre == "Pilates") {
         return pilates;
-    if (clase_nombre == "Stretching")
+    } else if (clase_nombre == "Stretching") {
         return stretching;
-     if (clase_nombre == "Zumba")
+    } else if (clase_nombre == "Zumba") {
         return zumba;
-     if (clase_nombre == "Boxeo")
+    } else if (clase_nombre == "Boxeo") {
         return boxeo;
-    else {
-        cout << "Error: Clase no encontrada." << std::endl;
+    } else {
+
         return musculacion; // Puedes devolver un valor por defecto o manejar el error de otra manera.
     }
 }

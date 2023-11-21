@@ -12,7 +12,7 @@ int main() {
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
 
-    uint n=0,j=0,k=0;
+    uint n=0,k=0;
 
     LeerClaseArchivo(archivo_clase,clase, n);
     archivo_clase.close();
@@ -29,9 +29,10 @@ int main() {
     archivo_asistencia.close();
 
 
-    cout<<"cliente"<<sizeof(cliente)<<endl;
-    printCliente(cliente);
-    cout<<"clases"<<sizeof(clase)<<endl;
+    //cout<<"cliente"<<sizeof(struct Cliente)<<endl;
+    //printCliente(cliente);
+    cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
+    // el archivo me lee 12 posiciones mas. Problemas con el archivo !
     printClase(clase);
 
 
