@@ -1,5 +1,18 @@
 #include "Cliente.h"
 
+bool ControlEstado(sCliente *cliente){
+
+
+    if( cliente->saldo >=0)
+    {return true;}
+
+    else
+    {return false;}
+
+
+}
+
+
 
 int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
 
@@ -78,7 +91,6 @@ uint stringtouint(string texto)
     return resultado;
 
 }
-
 
 
 void printCliente(sCliente *&cliente){

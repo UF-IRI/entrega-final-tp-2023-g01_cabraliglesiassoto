@@ -30,10 +30,10 @@ int LeerClienteArchivo(sCliente *&cliente, ifstream &Archivo, uint &n); // Leo y
 void resize_cliente (sCliente *& cliente, uint &n);
 
     // Otras funciones
-bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve falso
-    //void ControlSaldo(int saldo);
 
+bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve falso
 uint stringtouint(string texto);
 void printCliente(sCliente *&cliente);
+
 
 #endif

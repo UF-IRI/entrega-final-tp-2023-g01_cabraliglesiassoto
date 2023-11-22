@@ -12,6 +12,7 @@ isEmpty(CATCH_INCLUDE_DIR): {
 }
 
 SOURCES += \
+    Asistencia.cpp \
     main.cpp \
     tst_proyecto.cpp
 

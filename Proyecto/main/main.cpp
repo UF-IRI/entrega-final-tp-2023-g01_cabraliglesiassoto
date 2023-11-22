@@ -32,13 +32,27 @@ int main() {
 
     //cout<<"cliente"<<sizeof(struct Cliente)<<endl;
     //printCliente(cliente);
-    cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
+   // cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
     // el archivo me lee 12 posiciones mas. Problemas con el archivo !
-    printClase(clase);
+    //printClase(clase);
+
+
+   sAsistencia DefaultAsistencias[4] = {
+        {"1", 2, new sInscripciones[2]{{"1", 109029092}, {"12", 109029323}}},
+        {"2", 1, new sInscripciones[1]{{"1", 132322131}}},
+        {"3", 3, new sInscripciones[3]{{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}}},
+        {"4", 2, new sInscripciones[2]{{"1", 1231242321}, {"20", 1231242322}}}
+    };
 
 
 
+   //1 SPINNING 8 , 12 PILATES 8  .. clase mismo horario
+    // 1 SPINNIN   .. este tiene saldo negativo
+    //X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.
+   //  todo ok
 
+
+   ReservaClase(DefaultAsistencias,cliente);
 
 
 
