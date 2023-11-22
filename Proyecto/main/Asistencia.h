@@ -38,7 +38,7 @@ se haya inscripto primero(hora menor) , a ese le dan prioridad de cupo */
 
 bool ControlFecha(sAsistencia *&a, sClases *& clase );
 
-
+bool ControlCupo (sAsistencia *&asist, sClases *clase);
 
 
 

@@ -121,3 +121,27 @@ bool ControlFecha(sAsistencia *&a){
 
 }*/
 
+bool ControlCupo (sAsistencia *&asist, sClases *clase){
+
+         uint idclaseaux=0;
+         uint contador[60];
+         uint k=0;
+         for (uint i=0; i<60; i++){
+         contador[i]=clase[i].cupo_max;
+         }
+         for (uint j=0; j<sizeof(struct asist);j++){
+            while (k<sizeof(asist[j]->inscripciones)){
+                if (asist[j]->inscripciones[k]->id_clase == clase[j]->id_clase){
+                idclaseaux= stoi(clase[j]->idclase);
+                contador[idclaseaux-1]= contador[idclaseaux-1]-1;
+                }
+                if (contador [idclaseaux]==0){
+                return false;
+                }
+                else(contador [idclaseaux]>0);{
+                    return true;
+                }
+            }
+            k++;
+         }
+ }
