@@ -23,6 +23,7 @@ void resize_clases(sClases *& clase , uint &n ){
 }
 void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
 
+
     stringstream ss;
     string primera_linea, linea;
     char coma=',';

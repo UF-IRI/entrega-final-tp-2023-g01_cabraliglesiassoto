@@ -6,7 +6,7 @@
 
 struct Inscripciones {
     string id_clase;
-    string fecha; //time_t
+    time_t fecha; //time_t
 }; typedef struct  Inscripciones sInscripciones;
 
 struct Asistencia {
