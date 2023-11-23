@@ -16,6 +16,7 @@ typedef enum cupo_max eCupo_max;
     string clase_nombre;
     float horario;
     eCupo_max  cupo_max;
+    uint cant_clientes;
     //   sala cod_sala;
  };typedef struct Clases sClases;
 

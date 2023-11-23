@@ -2,6 +2,28 @@
 using namespace std;
 
 
+void imprimir(sAsistencia *D){
+    size_t a =sizeof(D)/sizeof(struct Asistencia);
+    cout<<"tamanio asistencia"<<a << endl;
+
+    for(uint i=0;i<4;i++){
+
+        cout<<"id:" <<D[i].id_cliente<< "  cant: "<< D[i].cant_inscripcion <<endl;
+        cout<< "     Inscripciones:";
+        for(uint m=0;m<D[i].cant_inscripcion; m++)
+        {
+
+            cout<<" "<< D[i].inscripciones[m].id_clase<< "," ;
+
+        }
+        cout<< " "<<endl;
+    }
+
+
+    }
+
+
+
 int main() {
 
 /*DECLARO VARIABLES */
@@ -30,31 +52,48 @@ int main() {
 
  /*Pruebas*/
 
-    //cout<<"cliente"<<sizeof(struct Cliente)<<endl;
-    //printCliente(cliente);
-   // cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
-    // el archivo me lee 12 posiciones mas. Problemas con el archivo !
-    //printClase(clase);
 
-
-   sAsistencia DefaultAsistencias[4] = {
+/*   sAsistencia D[4] = {
         {"1", 2, new sInscripciones[2]{{"1", 109029092}, {"12", 109029323}}},
         {"2", 1, new sInscripciones[1]{{"1", 132322131}}},
         {"3", 3, new sInscripciones[3]{{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}}},
         {"4", 2, new sInscripciones[2]{{"1", 1231242321}, {"20", 1231242322}}}
     };
+*/
+
+
+    sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
+    sInscripciones inscripciones2[1] = {{"1", 132322131}};
+    sInscripciones inscripciones3[3] = {{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}};
+    sInscripciones inscripciones4[2] = {{"1", 1231242321}, {"20", 1231242322}};
+
+    //sAsistencia *D= new sAsistencia[4];
+    sAsistencia *D=new sAsistencia[4];
+
+    D[0]=  {"1", 2, inscripciones1};//1-1 SPINNING 8 , 12 PILATES 8  .. clase mismo horario
+    D[1]=  {"2", 1, inscripciones2};    // 2-1 SPINNIN   .. este tiene saldo negativo
+    D[2]=  {"3", 3, inscripciones3}; //3-X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.
+    D[3]=  {"4", 2, inscripciones4};   // 4- todo ok
 
 
 
-   //1 SPINNING 8 , 12 PILATES 8  .. clase mismo horario
-    // 1 SPINNIN   .. este tiene saldo negativo
-    //X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.
-   //  todo ok
+cout<<"--------NORMAL-----------"<<endl;
+    imprimir(D);
 
+ cout<<"--------NO REPETIDO-----------"<<endl;
 
-   ReservaClase(DefaultAsistencias,cliente);
+    ControlRepetidos(D);
+    imprimir(D);
 
+ cout<<"--------SALDO NEG-----------"<<endl;
 
+    ControlSaldo(D,cliente);
+    imprimir(D);
+
+ cout<<"--------Mismo horario, diferente clase-----------"<<endl;
+
+    ControlHorario(D,clase);
+      imprimir(D);
 
     delete[]asistencia;
     delete[]cliente;
@@ -64,6 +103,10 @@ int main() {
 
     }
 
-
+//cout<<"cliente"<<sizeof(struct Cliente)<<endl;
+//printCliente(cliente);
+// cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
+// el archivo me lee 12 posiciones mas. Problemas con el archivo !
+//printClase(clase);
 
 

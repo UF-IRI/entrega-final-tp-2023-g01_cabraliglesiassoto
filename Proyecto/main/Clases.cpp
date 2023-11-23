@@ -49,6 +49,7 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
         clase[n-1].horario=stof(linea);
 
         clase[n-1].cupo_max=LlenarCupo(clase[n-1].clase_nombre); //arbitrario por el momento
+        clase[n-1].cant_clientes=0;
     }
 
 

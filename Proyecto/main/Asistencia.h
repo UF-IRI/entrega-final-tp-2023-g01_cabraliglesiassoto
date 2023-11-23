@@ -25,22 +25,22 @@ void LlenarInscripcion(sInscripciones *&inscript, uint &j );
 
 /* Reservas y auxiliares */
 
-int ReservaClase(sAsistencia *asisten, sCliente *cliente );
+void ReservaClase(sAsistencia *asisten, sCliente *cliente/*,  sClases *clase*/);
 
 /* A- Controla clase repetidas */
-bool ControlRepetidos(sAsistencia *&a);
+void ControlRepetidos(sAsistencia *&asist);
 
 /* B- Controla inscripcion de dos clases sea en horario distinto  */
-bool ControlHorario(sAsistencia *&a, sClases *&clase);
+void ControlHorario(sAsistencia *&a, sClases *clase);
 
 /*C- Si hay cupo max y paso las dos funciones anteriores, controla que cliente
 se haya inscripto primero(hora menor) , a ese le dan prioridad de cupo */
 
-bool ControlFecha(sAsistencia *&a, sClases *& clase );
+void ControlFecha(sAsistencia *&asist, sClases *& clase );
 
-bool ControlCupo (sAsistencia *&asist, sClases *clase);
+void ControlCupo (sAsistencia *&asist, sClases *clase);
 
-
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente);
 
 void ListarAlumnosporClase(sClases *clase, sCliente *cliente, sAsistencia *asistencia); // crea un archivo de los alumnos que se inscriben a la clase.
 
@@ -54,9 +54,6 @@ void ListarAlumnosporClase(sClases *clase, sCliente *cliente, sAsistencia *asist
     Cliente
     if (Clienteestado()==false)
       return valor;
-
-
-
 
 
 }*/
