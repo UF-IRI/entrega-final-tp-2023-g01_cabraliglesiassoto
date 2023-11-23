@@ -63,13 +63,41 @@ void ReservaClase(sAsistencia *&asist, sCliente *cliente /*,  sClases *clase*/){
     }
 */
 
-    ControlSaldo(asist,cliente);
-    ControlRepetidos(asist);
+ //   ControlSaldo(asist,cliente);
+  //  ControlRepetidos(asist);
+    uint cant_asistencia=4;
+    uint cont=0;
+    for(uint j=0;j<cant_asistencia; j++) // tamanio nuevo struct con variables nuevas
+    {
 
 
+    if(asist[j].id_cliente !="0" )
+    {
+            cont++;
+
+    }}
+
+    sAsistencia *nuevo= new sAsistencia[ cant_asistencia-cont];
+
+    for(uint m=0;m<cant_asistencia-cont; m++){
+    for(uint j=0;j<cant_asistencia; j++){ // tamanio nuevo struct con variables nuevas
+
+        if(asist[j].id_cliente !="0" ){
+
+            nuevo[m]= asist[j];
+
+               for(uint k=0;k<nuevo[m].cant_inscripcion; k++){
+
+                   if(asist[j].inscripciones[j].id_clase =="0")
+                       nuevo[m].cant_inscripcion--;
+               }
+
+
+         }
+    }
 }
 
-
+}
 
   //  if( cliente->saldo>=0 && asisten->id_cliente == cliente->id_cliente)   //controlo si la cuota esta al dia
 
