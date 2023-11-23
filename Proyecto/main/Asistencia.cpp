@@ -70,7 +70,6 @@ void ReservaClase(sAsistencia *&asist, sCliente *cliente /*,  sClases *clase*/){
     for(uint j=0;j<cant_asistencia; j++) // tamanio nuevo struct con variables nuevas
     {
 
-
     if(asist[j].id_cliente !="0" )
     {
             cont++;
@@ -91,8 +90,6 @@ void ReservaClase(sAsistencia *&asist, sCliente *cliente /*,  sClases *clase*/){
                    if(asist[j].inscripciones[j].id_clase =="0")
                        nuevo[m].cant_inscripcion--;
                }
-
-
          }
     }
 }
@@ -158,7 +155,6 @@ for (uint j = 0; j < cant_inscripcion; j++) {
 }
 }
 
-
 void ControlRepetidos(sAsistencia *&asist){
    // uint cant_asist= sizeof(asist)/ sizeof(asist[0]);
     uint cant_asist=4;
@@ -198,7 +194,6 @@ void ControlSaldo(sAsistencia *&asist, sCliente *cliente){
 
 
 }
-
 
 
 /*

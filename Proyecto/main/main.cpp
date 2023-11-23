@@ -67,7 +67,6 @@ int main() {
     sInscripciones inscripciones3[3] = {{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}};
     sInscripciones inscripciones4[2] = {{"1", 1231242321}, {"20", 1231242322}};
 
-    //sAsistencia *D= new sAsistencia[4];
     sAsistencia *D=new sAsistencia[4];
 
     D[0]=  {"1", 2, inscripciones1};//1-1 SPINNING 8 , 12 PILATES 8  .. clase mismo horario
@@ -80,20 +79,11 @@ int main() {
 cout<<"--------NORMAL-----------"<<endl;
     imprimir(D);
 
- cout<<"--------NO REPETIDO-----------"<<endl;
-
-    ControlRepetidos(D);
-    imprimir(D);
-
- cout<<"--------SALDO NEG-----------"<<endl;
-
-    ControlSaldo(D,cliente);
-    imprimir(D);
 
  cout<<"--------Mismo horario, diferente clase-----------"<<endl;
 
     ControlHorario(D,clase);
-      imprimir(D);
+    imprimir(D);
 
     delete[]asistencia;
     delete[]cliente;
@@ -110,3 +100,18 @@ cout<<"--------NORMAL-----------"<<endl;
 //printClase(clase);
 
 
+/*
+
+ cout<<"--------NO REPETIDO-----------"<<endl;
+
+    ControlRepetidos(D);
+    imprimir(D);
+
+ cout<<"--------SALDO NEG-----------"<<endl;
+
+    ControlSaldo(D,cliente);
+    imprimir(D);
+
+
+
+*/
