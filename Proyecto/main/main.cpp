@@ -1,30 +1,6 @@
 #include "Asistencia.h"
 using namespace std;
 
-
-void imprimir(sAsistencia *D){
-    //size_t a =sizeof(D)/sizeof(struct Asistencia);
-
-    cout<<"tamanio asistencia"<<4 << endl;
-
-    for(uint i=0;i<4;i++){
-
-        cout<<"id:" <<D[i].id_cliente<< "  cant: "<< D[i].cant_inscripcion <<endl;
-        cout<< "     Inscripciones:";
-        for(uint m=0;m<D[i].cant_inscripcion; m++)
-        {
-
-            cout<<" "<< D[i].inscripciones[m].id_clase<< "," ;
-
-        }
-        cout<< " "<<endl;
-    }
-
-
-    }
-
-
-
 int main() {
 
 /*DECLARO VARIABLES */
@@ -53,7 +29,6 @@ int main() {
 
  /*Pruebas*/
 
-
 /*   sAsistencia D[4] = {
         {"1", 2, new sInscripciones[2]{{"1", 109029092}, {"12", 109029323}}},
         {"2", 1, new sInscripciones[1]{{"1", 132322131}}},
@@ -65,26 +40,28 @@ int main() {
 
     sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
-    sInscripciones inscripciones3[3] = {{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}};
-    sInscripciones inscripciones4[2] = {{"1", 1231242321}, {"15", 1231242322}};
+    sInscripciones inscripciones3[3] = {{"8", 1231242321}, {"1", 1231242321}, {"8", 1231242321}};
+    sInscripciones inscripciones4[2] = {{"10", 1231242321}, {"15", 1231242322}};
 
     sAsistencia *D=new sAsistencia[4];
 
     D[0]=  {"1", 2, inscripciones1};//1-1 SPINNING 8 , 12 PILATES 8  .. clase mismo horario
     D[1]=  {"2", 1, inscripciones2};    // 2-1 SPINNIN   .. este tiene saldo negativo
-    D[2]=  {"3", 3, inscripciones3}; //3-X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.
+    D[2]=  {"3", 3, inscripciones3}; //3-X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.y cupomax
     D[3]=  {"4", 2, inscripciones4};   // 4- todo ok
 
-    clase[0].cant_clientes=43;
+    clase[0].cant_clientes=44;
 
 cout<<"--------NORMAL-----------"<<endl;
-    imprimir(D);
+    imprimir(D,4);
 
 
- cout<<"--------Mismo horario, diferente clase-----------"<<endl;
+ cout<<endl<<"-----Reserva (los 0 son basuraaa)-----------"<<endl;
 
-    ReservaClase(D,cliente,clase);
-    imprimir(D);
+ ReservaClase(D,cliente,clase);
+
+ //ModificarStruct(D);
+    imprimir(D,4);
 
     delete[]asistencia;
     delete[]cliente;
