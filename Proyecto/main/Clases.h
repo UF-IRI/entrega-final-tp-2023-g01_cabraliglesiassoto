@@ -26,7 +26,7 @@ void resize_clases(sClases *& clase , uint &n );
 void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n); // leo archivo y lleno struct
 void printClase(sClases *&clases);
 eCupo_max LlenarCupo(string clase_nombre);
-
+float BuscarHorario(string id_clase,sClases *clase);
 
 
 

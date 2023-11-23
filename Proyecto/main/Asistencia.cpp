@@ -1,5 +1,4 @@
 #include "Asistencia.h"
-const sAsistencia AsistenciaNula = { "", 0, nullptr };
 
 void resize_asistencia(sAsistencia *&asist,uint &n){
 
@@ -39,34 +38,19 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
 }
 
 
-/*int ReservaClase( sAsistencia *asisten, sClases *clase, sCliente *cliente ){
-    // habria que llamar al resize aca ?
-    //resize_asistencia (asisten,n); // que n usamos ?
-    //resize_inscriptos (asisten->inscripciones,n);
-    asisten->id_cliente = cliente->id_cliente;
-    asisten->inscripciones->id_clase = clase->id_clase;
-    //asisten->inscripciones->fecha = fecha de la reserva, como lo asignamos ?
-    //asisten->cant_inscriptos = hay que generar un contador con la cantidad de inscriptos y restarlo al cupo
-}*/
-
-void ReservaClase(sAsistencia *&asist, sCliente *cliente /*,  sClases *clase*/){
+void ReservaClase(sAsistencia *&asist, sCliente *cliente ,sClases *clase){
 
 
-   /* if( ControlEstado(cliente->saldo)!= false){
 
-        if( ControlRepetidos(asisten) != false){
+ ControlSaldo(asist,cliente);
+    cout<<"hola"<<endl;
+ ControlRepetidos(asist);
+    cout<<"hola2"<<endl;
+ //ControlHorario(asist,clase);
 
-            //if(ControlHorario() != false){
-            cout<< "hola"<<endl;
-
-            }
-    }
-*/
-
- //   ControlSaldo(asist,cliente);
-  //  ControlRepetidos(asist);
-    uint cant_asistencia=4;
-    uint cont=0;
+ ControlCupo(asist,clase);
+cout<<"hola3"<<endl;
+ /*   uint cont=0;
     for(uint j=0;j<cant_asistencia; j++) // tamanio nuevo struct con variables nuevas
     {
 
@@ -92,48 +76,16 @@ void ReservaClase(sAsistencia *&asist, sCliente *cliente /*,  sClases *clase*/){
                }
          }
     }
-}
+}*/
 
 }
-
-  //  if( cliente->saldo>=0 && asisten->id_cliente == cliente->id_cliente)   //controlo si la cuota esta al dia
-
-          // controlo si el horario de la clase que se anoto no es igual
-          //
-         // asisten->idclase== clase->id_clase && clase->horario == id
 
 
 
 void ControlHorario(sAsistencia *&a, sClases *clase)
 {
-  /*  uint cant_asist=4;
 
-    for(uint i=0;i<cant_asist;i++){
-
-         for(uint j=0;j<asist[i].cant_inscripcion;j++){ // comparo entre inscripciones.
-
-            for(uint m=j+1;m<asist[i].cant_inscripcion;m++){
-
-
-                 // ya sabemos que no hay clases repetidas porque pusimos variable en 0
-                //asist[i].inscripciones[j].id_clase != asist[i].inscripciones[m].id_clase
-                if(asist[i].inscripciones[j].id_clase != "0" &&
-                   asist[i].inscripciones[j].id_clase == clase->id_clase &&
-                   asist[i].inscripciones[m].id_clase == clase->id_clase )
-
-
-                     ){
-
-                    asist[i].inscripciones[m].id_clase="0";  // llenamos de 0
-                }
-            }
-         }
-
-    }
-
-*/
-
-    uint cant_asistencia=4;
+uint cant_asistencia=4;
 for (uint i = 0; i < cant_asistencia; i++) {
 
 sAsistencia *asist = &a[i];
@@ -141,14 +93,16 @@ sInscripciones *inscripciones = asist->inscripciones;
 uint cant_inscripcion = asist->cant_inscripcion;
 
 
-
 for (uint j = 0; j < cant_inscripcion; j++) {
+
     sInscripciones *insc = &inscripciones[j];
-            if(insc->id_clase != clase->id_clase){
-              float hora= clase->horario;
-                   if ( clase->horario == hora) {
-         insc->id_clase = "0";
-         insc->fecha = 0;
+
+         if(insc->id_clase != clase->id_clase){
+
+            if ( clase->horario == BuscarHorario(insc->id_clase ,clase)   ) {
+
+             insc->id_clase = "0";
+             insc->fecha = 0;
            }
            }
    }
@@ -195,38 +149,25 @@ void ControlSaldo(sAsistencia *&asist, sCliente *cliente){
 
 }
 
+void ControlCupo (sAsistencia *&asistencia, sClases *clase){
 
-/*
-bool ControlFecha(sAsistencia *&a){
-
-         a->inscripciones->fecha
-         // Controla la fecha de inscripcion del cliente.
-         // Si es menor que otra fecha de inscripcion devuelve true
-
-
-}*/
-
-/*bool ControlCupo (sAsistencia *&asist, sClases *clase){
-
-         uint idclaseaux=0;
-         uint contador[60];
-         uint k=0;
-         for (uint i=0; i<60; i++){
-         contador[i]=clase[i].cupo_max;
-         }
-         for (uint j=0; j<sizeof(struct asist);j++){
-            while (k<sizeof(asist[j]->inscripciones)){
-                if (asist[j]->inscripciones[k]->id_clase == clase[j]->id_clase){
-                idclaseaux= stoi(clase[j]->idclase);
-                contador[idclaseaux-1]= contador[idclaseaux-1]-1;
-                }
-                if (contador [idclaseaux]==0){
-                return false;
-                }
-                else(contador [idclaseaux]>0);{
-                    return true;
+    uint cant_asistencia=4;
+         for (uint i = 0; i < cant_asistencia; i++) {
+            sAsistencia *asist = &asistencia[i];
+            sInscripciones *inscripciones = asist->inscripciones;
+            uint cant_inscripcion = asist->cant_inscripcion;
+            for (uint j = 0; j < cant_inscripcion; j++) {
+                sInscripciones *insc = &inscripciones[j];
+            if (insc->id_clase == clase->id_clase) {
+                clase->cant_clientes += 1;
+                if (clase->cant_clientes > clase->cupo_max) {
+                       insc->id_clase = "0";
+                       insc->fecha = 0;
+                    }
                 }
             }
-            k++;
          }
- }*/
+    }
+
+
+

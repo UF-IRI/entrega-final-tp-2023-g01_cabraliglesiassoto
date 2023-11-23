@@ -25,7 +25,7 @@ void LlenarInscripcion(sInscripciones *&inscript, uint &j );
 
 /* Reservas y auxiliares */
 
-void ReservaClase(sAsistencia *asisten, sCliente *cliente/*,  sClases *clase*/);
+void ReservaClase(sAsistencia *&asisten, sCliente *cliente,  sClases *clase);
 
 /* A- Controla clase repetidas */
 void ControlRepetidos(sAsistencia *&asist);
@@ -36,8 +36,6 @@ void ControlHorario(sAsistencia *&a, sClases *clase);
 /*C- Si hay cupo max y paso las dos funciones anteriores, controla que cliente
 se haya inscripto primero(hora menor) , a ese le dan prioridad de cupo */
 
-void ControlFecha(sAsistencia *&asist, sClases *& clase );
-
 void ControlCupo (sAsistencia *&asist, sClases *clase);
 
 void ControlSaldo(sAsistencia *&asist, sCliente *cliente);
@@ -45,16 +43,4 @@ void ControlSaldo(sAsistencia *&asist, sCliente *cliente);
 void ListarAlumnosporClase(sClases *clase, sCliente *cliente, sAsistencia *asistencia); // crea un archivo de los alumnos que se inscriben a la clase.
 
 
-
-    /* Necesitamos idCliente idClase
-     *  Cliente saldo positivo , no reserve dos clases en el mismo horario o en la misma clase.
-     *  Clase horario coincida con el idClase y el nombre
-     *  Si dos personas reservan al mismo horario y justo cupomax, priorizo horario(fecha) o cant_ausencia.
-
-    Cliente
-    if (Clienteestado()==false)
-      return valor;
-
-
-}*/
 #endif // ASISTENCIA_H

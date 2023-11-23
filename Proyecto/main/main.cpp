@@ -3,8 +3,9 @@ using namespace std;
 
 
 void imprimir(sAsistencia *D){
-    size_t a =sizeof(D)/sizeof(struct Asistencia);
-    cout<<"tamanio asistencia"<<a << endl;
+    //size_t a =sizeof(D)/sizeof(struct Asistencia);
+
+    cout<<"tamanio asistencia"<<4 << endl;
 
     for(uint i=0;i<4;i++){
 
@@ -65,7 +66,7 @@ int main() {
     sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
     sInscripciones inscripciones3[3] = {{"1", 1231242321}, {"20", 1231242321}, {"1", 1231242321}};
-    sInscripciones inscripciones4[2] = {{"1", 1231242321}, {"20", 1231242322}};
+    sInscripciones inscripciones4[2] = {{"1", 1231242321}, {"15", 1231242322}};
 
     sAsistencia *D=new sAsistencia[4];
 
@@ -74,7 +75,7 @@ int main() {
     D[2]=  {"3", 3, inscripciones3}; //3-X2 1 SPINNIG, 20 STETCHIN 15   ..Repetidos.
     D[3]=  {"4", 2, inscripciones4};   // 4- todo ok
 
-
+    clase[0].cant_clientes=43;
 
 cout<<"--------NORMAL-----------"<<endl;
     imprimir(D);
@@ -82,7 +83,7 @@ cout<<"--------NORMAL-----------"<<endl;
 
  cout<<"--------Mismo horario, diferente clase-----------"<<endl;
 
-    ControlHorario(D,clase);
+    ReservaClase(D,cliente,clase);
     imprimir(D);
 
     delete[]asistencia;

@@ -82,6 +82,14 @@ eCupo_max LlenarCupo(string clase_nombre){
     }
 }
 
+float BuscarHorario(string id_clase, sClases *clase){
 
+    size_t numClase =  sizeof(struct Clases);
+    for(uint i=0;i<numClase ;i++)
+    { if(id_clase == clase[i].id_clase)
+         return clase[i].horario;
+
+    }
+}
 
 
