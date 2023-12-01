@@ -53,15 +53,26 @@ int main() {
     clase[0].cant_clientes=44;
 
 cout<<"--------NORMAL-----------"<<endl;
+
     imprimir(D,4);
 
 
  cout<<endl<<"-----Reserva (los 0 son basuraaa)-----------"<<endl;
 
- ReservaClase(D,cliente,clase);
+  ReservaClase(D,cliente,clase);
+ imprimir(D,4);
 
- //ModificarStruct(D);
-    imprimir(D,4);
+
+ uint tam=0;
+ while ( D[tam].id_cliente != "") {  // verificamos la cant de elementos
+     tam++;
+ }
+ tam--;
+
+ cout<<endl<<"-----MODIFIC-----------"<<endl;
+   ModificarStruct(D,4);
+   imprimir(D,tam);
+
 
     delete[]asistencia;
     delete[]cliente;

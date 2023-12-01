@@ -94,8 +94,8 @@ uint stringtouint(string texto)
 
 
 void printCliente(sCliente *&cliente){
-  size_t numCliente =  sizeof(struct Cliente);
-   for(uint i=0;i<numCliente ;i++)
+    size_t numCliente =  sizeof(struct Cliente);
+    for(uint i=0;i<numCliente ;i++)
         cout<< cliente[i].id_cliente<<' '<< cliente[i].saldo <<endl;
 
 

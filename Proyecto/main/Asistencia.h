@@ -33,12 +33,12 @@ se haya inscripto primero(hora menor) , a ese le dan prioridad de cupo */
 
 void ReservaClase(sAsistencia *&asisten, sCliente *cliente,  sClases *clase);
 
-void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase);
-void ControlRepetidos(sAsistencia *&asist); //A
-void ControlHorario(sAsistencia *&a, sClases *clase);//B
-void ControlCupo (sAsistencia *&asist, sClases *clase);//C
-void ControlSaldo(sAsistencia *&asist, sCliente *cliente);//D
-void ModificarStruct(sAsistencia *&asist );
+void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam);
+void ControlRepetidos(sAsistencia *&asist,uint tam); //A
+void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
+void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
+void ModificarStruct(sAsistencia *&asist, uint tam );
 
 void imprimir(sAsistencia *D,uint num);
 
