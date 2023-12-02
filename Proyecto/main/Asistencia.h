@@ -21,6 +21,7 @@ struct Asistencia {
 void resize_asistencia(sAsistencia *&asist,uint &n);
 void resize_inscriptos(sInscripciones *&inscrip ,uint &n);
 void LlenarInscripcion(sInscripciones *&inscript, uint &j );
+void EscribirAsistenciaArchivo(sAsistencia *&Asistencias, ofstream &archibinwr,uint cantAsistencias);
 
 /* A- Controla clase repetidas DE UN CLIENTE */
 /* B- Controla inscripcion de dos clases sea en horario distinto  */
@@ -38,7 +39,7 @@ void ControlRepetidos(sAsistencia *&asist,uint tam); //A
 void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
 void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
 void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
-void ModificarStruct(sAsistencia *&asist, uint &tam );
+void ModificarStruct(sAsistencia *&asist, uint &tam);
 
 void imprimir(sAsistencia *D,uint num);
 int FallasInscripcion(sAsistencia D);

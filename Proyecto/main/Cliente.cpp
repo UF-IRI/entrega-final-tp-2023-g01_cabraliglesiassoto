@@ -12,8 +12,6 @@ bool ControlEstado(sCliente *cliente){
 
 }
 
-
-
 int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
 
     stringstream ss;

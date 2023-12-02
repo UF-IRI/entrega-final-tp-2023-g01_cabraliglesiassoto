@@ -5,10 +5,12 @@ int main() {
 
 /*DECLARO VARIABLES */
 
-    ifstream archivo_clase,archivo_cliente,archivo_asistencia ;
+    ifstream archivo_clase,archivo_cliente;
+    ofstream archivo_asistencia ;
     sClases* clase = nullptr;
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
+    //sAsistencia *nuevo=nullptr;
     uint n=0,k=0;
 
  /* Clases*/
@@ -20,11 +22,6 @@ int main() {
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
     LeerClienteArchivo(cliente,archivo_cliente, k);
     archivo_cliente.close();
-
-/* Asistencia */
-    archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
-    //LeerAsistenciaArchivo(asistencia,archivo_asistencia,j);
-    archivo_asistencia.close();
 
 
  /*Pruebas*/
@@ -67,25 +64,44 @@ cout<<"--------NORMAL-----------"<<endl;
  cout<<endl<<"-----Reserva (los 0 son basuraaa)-----------"<<endl;
 
   ReservaClase(D,cliente,clase);
+  imprimir(D,tam);
 
- uint tam2=0;
- while ( D[tam2].id_cliente != "") {  // verificamos la cant de elementos
-        tam2++;
+
+cout<<endl<<"-----Funcion fallas en la inscripcion-----------"<<endl;
+cout<< FallasInscripcion(D[0])<<endl;
+cout<<FallasInscripcion(D[1])<<endl;
+cout<< FallasInscripcion(D[2])<<endl;
+cout<< FallasInscripcion(D[3])<<endl;
+
+ cout<<endl<<"-----Archivo binario----------"<<endl;
+
+
+ /* Asistencia */
+
+ archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
+ EscribirAsistenciaArchivo(D,archivo_asistencia,tam);
+ archivo_asistencia.close();
+
+
+ ifstream infile("asistencias_1697673600000.dat", ios::binary);
+ if (!infile.is_open()) {
+        cout << "Error opening binary file" << endl;
+        return 1;
  }
- tam2--;
- cout<<tam2<<endl;
 
-  imprimir(D,tam2);
+ char buffer[1024];
+ while (infile.good()) {
+        infile.read(buffer, sizeof(buffer));
+ }
 
+ infile.close();
 
-
-
- cout<<endl<<"-----MODIFIC-----------"<<endl;
-
-
-
+ for(uint i=0;i<1024;i++)
+        cout<< buffer[i];
 
 
+
+    delete [] D;
     delete[]asistencia;
     delete[]cliente;
     delete[]clase;

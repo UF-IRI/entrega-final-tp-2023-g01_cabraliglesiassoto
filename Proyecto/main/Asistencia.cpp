@@ -1,5 +1,22 @@
 #include "Asistencia.h"
 
+
+void EscribirAsistenciaArchivo(sAsistencia *&Asistencias, ofstream &archibinwr,uint cantAsistencias){
+
+
+if (archibinwr.is_open()) {
+    for (uint i=0; i<cantAsistencias; i++) {
+        archibinwr.write((char*)&Asistencias[i].id_cliente, sizeof(uint));
+        archibinwr.write((char*)&Asistencias[i].cant_inscripcion, sizeof(uint));
+        for(uint j = 0; j < Asistencias[i].cant_inscripcion; j++) {
+            archibinwr.write((char*)&Asistencias[i].inscripciones[j],sizeof(sInscripciones));
+
+        }
+    }
+}
+
+}
+
 void resize_asistencia(sAsistencia *&asist,uint &n){
 
     if(asist==nullptr){
@@ -51,7 +68,7 @@ ControlSaldo(asist,cliente,tam);
 ControlRepetidosyHorario(asist,clase,tam);// uno dos funciones pq sino mi pc muere con 4 funciones juntas
 ControlCupo(asist,clase,tam);
 
-ModificarStruct(asist,tam);
+//ModificarStruct(asist,tam, nuevo);
 /*
  uint cont=0;
     for(uint j=0;j<cant_asistencia; j++) // tamanio nuevo struct con variables nuevas
@@ -84,41 +101,92 @@ ModificarStruct(asist,tam);
 
 }
 
+/*
 void ModificarStruct(sAsistencia *&asist,uint &cant_asistencia){
 
 
-sAsistencia *nuevo= nullptr;
-uint aux_asist=0;
+uint aux_asist=1;
+uint aux_insc=1;
+sAsistencia *nuevo=  new sAsistencia [aux_asist];
+sInscripciones *inscrip_aux= new sInscripciones [aux_insc];
 
 for( uint i=0;i<cant_asistencia;i++)
 {
-     sAsistencia *a= &asist[i];
+           sAsistencia *a= &asist[i];
+         if(a->id_cliente !="0"){
+
+
+
          for(uint k=0;k<a->cant_inscripcion;k++ ){
 
-            uint contFallaInscrip = FallasInscripcion(asist[i]);
+            //uint contFallaInscrip = FallasInscripcion(asist[i]);
 
-            if(a->id_cliente != "0" &&  (a->cant_inscripcion - contFallaInscrip)>0)
+            if( a->id_cliente != "0" && (a->cant_inscripcion - FallasInscripcion(asist[i]))>0)
             {
-                uint aux_insc=0;
-                sInscripciones *inscrip_aux= nullptr;
-                resize_inscriptos(inscrip_aux,aux_insc); // agrego una inscripcion a struct auxiliar.
                 inscrip_aux[aux_insc-1]= a->inscripciones[k];
-
-
-                resize_asistencia(nuevo,aux_asist);
-                nuevo[aux_asist-1].id_cliente= a->id_cliente;
-                nuevo[aux_asist-1].cant_inscripcion= a->cant_inscripcion- contFallaInscrip; //
-                nuevo[aux_asist-1].inscripciones=inscrip_aux;
+                resize_inscriptos(inscrip_aux,aux_insc); // agrego una inscripcion a struct auxiliar.
 
             }
+
+            nuevo[aux_asist-1].id_cliente= a->id_cliente;
+            nuevo[aux_asist-1].cant_inscripcion= a->cant_inscripcion- FallasInscripcion(asist[i]); //
+            nuevo[aux_asist-1].inscripciones=inscrip_aux;
+            resize_asistencia(nuevo,aux_asist);
          }
+
+         }
+
 }
 
 delete [] asist;
 asist=nuevo;
 cant_asistencia=aux_asist;
 
+}  */
+/*
+sAsistencia *nuevo=nullptr;
+uint aux_asist=0;
+
+for( uint i=0;i<cant_asistencia;i++)
+{
+     sAsistencia *a= &asist[i];
+         for(uint k=0;k<a->cant_inscripcion;k++ ){
+            uint aux_insc=0;
+            sInscripciones *inscrip_aux= nullptr;
+            uint contFallaInscrip = FallasInscripcion(asist[i]);
+
+            if(a->id_cliente != "0" &&  (a->cant_inscripcion - contFallaInscrip)>0)
+            {
+                resize_inscriptos(inscrip_aux,aux_insc); // agrego una inscripcion a struct auxiliar.
+                inscrip_aux[aux_insc-1]= a->inscripciones[k];
+                resize_asistencia(nuevo,aux_asist);
+                nuevo[aux_asist-1].id_cliente= a->id_cliente;
+                nuevo[aux_asist-1].cant_inscripcion= a->cant_inscripcion- contFallaInscrip; //
+                nuevo[aux_asist-1].inscripciones=inscrip_aux;
+
+            }
+
+         }
+
+
 }
+
+
+delete [] asist;
+asist=nuevo;
+cant_asistencia=aux_asist;
+
+
+}
+
+*/
+
+
+
+
+
+
+
 
 
 
