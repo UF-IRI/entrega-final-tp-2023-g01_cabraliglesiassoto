@@ -22,10 +22,10 @@ if (archibinwr.is_open()) {
            archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(A[i])<< "{";
 
            for(uint k=0;k<a->cant_inscripcion;k++ ){
-
+               if(a->inscripciones[k].id_clase!= "0"){
                archibinwr <<"(" + a->inscripciones[k].id_clase +','<<  a->inscripciones[k].fecha<< ")";
 
-          }
+               }}
 
            archibinwr<<"}"<<endl;
 
