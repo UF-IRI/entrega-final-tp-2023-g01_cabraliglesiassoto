@@ -1,21 +1,38 @@
 #include "Asistencia.h"
 
 
-void EscribirAsistenciaArchivo(sAsistencia *&Asistencias, ofstream &archibinwr,uint cantAsistencias){
+void EscribirAsistenciaArchivo(sAsistencia *&A, ofstream &archibinwr,uint cant_asistencia){
 
 
 if (archibinwr.is_open()) {
-    for (uint i=0; i<cantAsistencias; i++) {
+   /* for (uint i=0; i<cantAsistencias; i++) {
         archibinwr.write((char*)&Asistencias[i].id_cliente, sizeof(uint));
         archibinwr.write((char*)&Asistencias[i].cant_inscripcion, sizeof(uint));
         for(uint j = 0; j < Asistencias[i].cant_inscripcion; j++) {
             archibinwr.write((char*)&Asistencias[i].inscripciones[j],sizeof(sInscripciones));
 
-        }
+        }*/
+
+
+   for( uint i=0;i<cant_asistencia;i++)
+   {
+       sAsistencia *a= &A[i];
+       if(a->id_cliente !="0" && ( a->cant_inscripcion - FallasInscripcion(A[i]))>0){
+
+           archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(A[i])<< "{";
+
+           for(uint k=0;k<a->cant_inscripcion;k++ ){
+
+               archibinwr <<"(" + a->inscripciones[k].id_clase +','<<  a->inscripciones[k].fecha<< ")";
+
+          }
+
+           archibinwr<<"}"<<endl;
+
     }
 }
 
-}
+}}
 
 void resize_asistencia(sAsistencia *&asist,uint &n){
 

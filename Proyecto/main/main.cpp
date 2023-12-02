@@ -6,7 +6,7 @@ int main() {
 /*DECLARO VARIABLES */
 
     ifstream archivo_clase,archivo_cliente;
-    ofstream archivo_asistencia ;
+    ofstream archivo_asistencia,texto ;
     sClases* clase = nullptr;
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
@@ -83,7 +83,10 @@ cout<< FallasInscripcion(D[3])<<endl;
  archivo_asistencia.close();
 
 
- ifstream infile("asistencias_1697673600000.dat", ios::binary);
+ texto.open("ReservasValidas.txt");
+ EscribirAsistenciaArchivo(D,texto,tam);
+ texto.close();
+/* ifstream infile("asistencias_1697673600000.dat", ios::binary);
  if (!infile.is_open()) {
         cout << "Error opening binary file" << endl;
         return 1;
@@ -100,8 +103,8 @@ cout<< FallasInscripcion(D[3])<<endl;
         cout<< buffer[i];
 
 
-
-    delete [] D;
+*/
+    delete []D;
     delete[]asistencia;
     delete[]cliente;
     delete[]clase;
