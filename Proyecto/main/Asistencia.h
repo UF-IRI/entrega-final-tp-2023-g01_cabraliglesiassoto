@@ -38,8 +38,8 @@ void ControlRepetidos(sAsistencia *&asist,uint tam); //A
 void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
 void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
 void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
-void ModificarStruct(sAsistencia *&asist, uint tam );
+void ModificarStruct(sAsistencia *&asist, uint &tam );
 
 void imprimir(sAsistencia *D,uint num);
-
+int FallasInscripcion(sAsistencia D);
 #endif // ASISTENCIA_H

@@ -51,6 +51,7 @@ ControlSaldo(asist,cliente,tam);
 ControlRepetidosyHorario(asist,clase,tam);// uno dos funciones pq sino mi pc muere con 4 funciones juntas
 ControlCupo(asist,clase,tam);
 
+ModificarStruct(asist,tam);
 /*
  uint cont=0;
     for(uint j=0;j<cant_asistencia; j++) // tamanio nuevo struct con variables nuevas
@@ -83,47 +84,46 @@ ControlCupo(asist,clase,tam);
 
 }
 
-void ModificarStruct(sAsistencia *&asist,uint cant_asistencia){
+void ModificarStruct(sAsistencia *&asist,uint &cant_asistencia){
+
 
 sAsistencia *nuevo= nullptr;
 uint aux_asist=0;
 
+for( uint i=0;i<cant_asistencia;i++)
+{
+     sAsistencia *a= &asist[i];
+         for(uint k=0;k<a->cant_inscripcion;k++ ){
 
-for(uint j=0;j<cant_asistencia; j++) {// tamanio nuevo struct con variables nuevas
+            uint contFallaInscrip = FallasInscripcion(asist[i]);
 
-         sAsistencia *a= &asist[j];
+            if(a->id_cliente != "0" &&  (a->cant_inscripcion - contFallaInscrip)>0)
+            {
+                uint aux_insc=0;
+                sInscripciones *inscrip_aux= nullptr;
+                resize_inscriptos(inscrip_aux,aux_insc); // agrego una inscripcion a struct auxiliar.
+                inscrip_aux[aux_insc-1]= a->inscripciones[k];
 
-         if(a->id_cliente !="0" ){   // si pago
 
-            uint aux_insc=0;
-            sInscripciones *inscrip_aux= nullptr;
+                resize_asistencia(nuevo,aux_asist);
+                nuevo[aux_asist-1].id_cliente= a->id_cliente;
+                nuevo[aux_asist-1].cant_inscripcion= a->cant_inscripcion- contFallaInscrip; //
+                nuevo[aux_asist-1].inscripciones=inscrip_aux;
 
-            for(uint m = 0; m < a->cant_inscripcion; m++){
-
-                if(a->inscripciones[m].id_clase != "0"){ // si no cumplio las condiciones ABCD
-                    a->cant_inscripcion--;
-                    if(a->cant_inscripcion > 0){// inscripcion no vacia
-                        resize_inscriptos(inscrip_aux,aux_insc); // agrego una inscripcion a struct auxiliar.
-                        inscrip_aux[aux_insc-1]= a->inscripciones[m];
-                    }
-
-                }
             }
-
-            if(a->cant_inscripcion >0){
-
-            resize_asistencia(nuevo,aux_asist);
-            nuevo[aux_asist-1]= asist[j];
-            nuevo->inscripciones = inscrip_aux;             
          }
-  delete[] inscrip_aux;
-}
 }
 
+delete [] asist;
 asist=nuevo;
-delete[]nuevo;
+cant_asistencia=aux_asist;
 
 }
+
+
+
+
+
 
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam){
 
@@ -153,6 +153,7 @@ for (uint j = 0; j < cant_inscripcion; j++) {
 
              insc->id_clase = "0";
              insc->fecha = 0;
+
            }
            }
 
@@ -231,5 +232,16 @@ void imprimir(sAsistencia *D,uint num){
          }
     }
 
+int FallasInscripcion(sAsistencia D){
+         uint cont=0;
+         for(uint m = 0; m < D.cant_inscripcion; m++){
+
+            if(D.inscripciones[m].id_clase == "0") // la inscripcion no valida
+                cont++;
+         }
+
+         return  cont;
+
+}
 
 

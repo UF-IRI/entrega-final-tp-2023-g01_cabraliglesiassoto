@@ -54,24 +54,36 @@ int main() {
 
 cout<<"--------NORMAL-----------"<<endl;
 
-    imprimir(D,4);
+    uint tam=0;
+    while ( D[tam].id_cliente != "") {  // verificamos la cant de elementos
+        tam++;
+    }
+    tam--;
+
+
+    imprimir(D,tam);
 
 
  cout<<endl<<"-----Reserva (los 0 son basuraaa)-----------"<<endl;
 
   ReservaClase(D,cliente,clase);
- imprimir(D,4);
 
-
- uint tam=0;
- while ( D[tam].id_cliente != "") {  // verificamos la cant de elementos
-     tam++;
+ uint tam2=0;
+ while ( D[tam2].id_cliente != "") {  // verificamos la cant de elementos
+        tam2++;
  }
- tam--;
+ tam2--;
+ cout<<tam2<<endl;
+
+  imprimir(D,tam2);
+
+
+
 
  cout<<endl<<"-----MODIFIC-----------"<<endl;
-   ModificarStruct(D,4);
-   imprimir(D,tam);
+
+
+
 
 
     delete[]asistencia;
