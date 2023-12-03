@@ -18,17 +18,14 @@ struct Asistencia {
 
 
 /*Archivos y resize*/
+
+/* Devuelve un archivo con las asistencias validas en formato binario y txt (esto es para guiarnos nosotros)*/
+
+void EscribirArchivoBIN(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia);
+void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia);
+
 void resize_asistencia(sAsistencia *&asist,uint &n);
 void resize_inscriptos(sInscripciones *&inscrip ,uint &n);
-void LlenarInscripcion(sInscripciones *&inscript, uint &j );
-void EscribirAsistenciaArchivo(sAsistencia *&Asistencias, ofstream &archibinwr,uint cantAsistencias);
-
-/* A- Controla clase repetidas DE UN CLIENTE */
-/* B- Controla inscripcion de dos clases sea en horario distinto  */
-/* C- Si hay cupo max y paso las dos funciones anteriores, controla que cliente
-se haya inscripto primero(hora menor) , a ese le dan prioridad de cupo */
-
-/* D- Controla saldo de cliente y coloca 0 id cliente */
 
 /* Reservas y auxiliares */
 
@@ -39,8 +36,18 @@ void ControlRepetidos(sAsistencia *&asist,uint tam); //A
 void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
 void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
 void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
-void ModificarStruct(sAsistencia *&asist, uint &tam);
+int FallasInscripcion(sAsistencia D);//E
 
+/* A- Controla clase repetidas DE UN CLIENTE */
+/* B- Controla inscripcion de dos clases sea en horario distinto  */
+/* C- Si hay cupo max y paso las dos funciones anteriores, controla que cliente
+se haya inscripto primero(hora menor), a ese le dan prioridad de cupo */
+
+/* D- Controla saldo de cliente y coloca 0 id cliente */
+/*E- Indica cantidad de inscripciones fallidas de un solo cliente */
+
+
+void ModificarStruct(sAsistencia *&asist, uint &tam);// hubo problemas al modificar struct.. (no lo pide)
 void imprimir(sAsistencia *D,uint num);
-int FallasInscripcion(sAsistencia D);
+void Imprimir(sAsistencia *D,uint num);
 #endif // ASISTENCIA_H

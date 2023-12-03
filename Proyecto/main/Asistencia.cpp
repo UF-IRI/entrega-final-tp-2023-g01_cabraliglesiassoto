@@ -1,38 +1,42 @@
 #include "Asistencia.h"
 
 
-void EscribirAsistenciaArchivo(sAsistencia *&A, ofstream &archibinwr,uint cant_asistencia){
+void EscribirArchivoBIN(sAsistencia *&A, ofstream &archibinwr,uint cant_asistencia){
 
 
-if (archibinwr.is_open()) {
-   /* for (uint i=0; i<cantAsistencias; i++) {
-        archibinwr.write((char*)&Asistencias[i].id_cliente, sizeof(uint));
-        archibinwr.write((char*)&Asistencias[i].cant_inscripcion, sizeof(uint));
-        for(uint j = 0; j < Asistencias[i].cant_inscripcion; j++) {
-            archibinwr.write((char*)&Asistencias[i].inscripciones[j],sizeof(sInscripciones));
+    if (archibinwr.is_open()) {
+         for (uint i=0; i<cant_asistencia; i++) {
+            archibinwr.write((char*)&A[i].id_cliente, sizeof(string));
+            archibinwr.write((char*)&A[i].cant_inscripcion, sizeof(uint));
 
-        }*/
+            for(uint j = 0; j < A[i].cant_inscripcion; j++)
+               archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
 
+        }
+    }
+}
+void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia){
 
-   for( uint i=0;i<cant_asistencia;i++)
-   {
-       sAsistencia *a= &A[i];
-       if(a->id_cliente !="0" && ( a->cant_inscripcion - FallasInscripcion(A[i]))>0){
+    if (archibinwr.is_open()) {
 
-           archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(A[i])<< "{";
+        for( uint i=0;i<cant_asistencia;i++)
+        {
+           sAsistencia *a= &Asistencias[i];
+           if(a->id_cliente !="0" && ( a->cant_inscripcion - FallasInscripcion(Asistencias[i]))>0){
 
-           for(uint k=0;k<a->cant_inscripcion;k++ ){
-               if(a->inscripciones[k].id_clase!= "0"){
-               archibinwr <<"(" + a->inscripciones[k].id_clase +','<<  a->inscripciones[k].fecha<< ")";
+               archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(Asistencias[i])<< "{";
 
-               }}
+               for(uint k=0;k<a->cant_inscripcion;k++ ){
+                   if(a->inscripciones[k].id_clase!= "0")
+                       archibinwr <<"(" + a->inscripciones[k].id_clase +','<<  a->inscripciones[k].fecha<< ")";
 
-           archibinwr<<"}"<<endl;
-
+                }
+            archibinwr<<"}"<<endl;
+            }
+        }
     }
 }
 
-}}
 
 void resize_asistencia(sAsistencia *&asist,uint &n){
 
@@ -61,11 +65,10 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
         return;
     }
 
-    sInscripciones* aux = new sInscripciones[++n];
+        sInscripciones* aux = new sInscripciones[++n];
 
-
-     for(uint i = 0; i < n-1; i++)
-         aux[i] = inscrip[i];
+         for(uint i = 0; i < n-1; i++)
+             aux[i] = inscrip[i];
 
     delete[] inscrip;
     inscrip= aux;
@@ -199,17 +202,6 @@ cant_asistencia=aux_asist;
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam){
 
 ControlHorario(asist,clase,tam);
@@ -284,12 +276,13 @@ void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia
          for (uint i = 0; i < cant_asistencia; i++) {
             sAsistencia *asist = &asistencia[i];
             sInscripciones *inscripciones = asist->inscripciones;
-            uint cant_inscripcion = asist->cant_inscripcion;
-            for (uint j = 0; j < cant_inscripcion; j++) {
+
+
+            for (uint j = 0; j < asist->cant_inscripcion; j++) {
                 sInscripciones *insc = &inscripciones[j];
             if (insc->id_clase == clase->id_clase) {
                 clase->cant_clientes += 1;
-                if (clase->cant_clientes > clase->cupo_max) {
+                if (clase->cant_clientes > clase->cupo_max ) {
                        insc->id_clase = "0";
                        insc->fecha = 0;
                     }
@@ -316,6 +309,28 @@ void imprimir(sAsistencia *D,uint num){
             cout<< " "<<endl;
          }
     }
+
+void Imprimir(sAsistencia *D,uint num){
+
+    cout<<"tamanio asistencia"<<num << endl;
+
+    for(uint i=0;i<num;i++){
+
+         cout<<"-ID:" <<D[i].id_cliente<< "  CANT: "<< D[i].cant_inscripcion <<endl;
+
+            //cout<< " Clase y Hora"<<endl;
+
+        for(uint m=0;m<D[i].cant_inscripcion; m++){
+             struct tm *tiempo_struct = gmtime(&D[i].inscripciones[m].fecha);
+             char buffer[80];
+             strftime(buffer, sizeof(buffer), "%H:%M:%S", tiempo_struct);
+             cout<<"  "+ D[i].inscripciones[m].id_clase +" - " << buffer <<endl;
+
+         }
+        cout<<endl;
+        }
+}
+
 
 int FallasInscripcion(sAsistencia D){
          uint cont=0;

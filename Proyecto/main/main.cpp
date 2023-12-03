@@ -10,7 +10,7 @@ int main() {
     sClases* clase = nullptr;
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
-    //sAsistencia *nuevo=nullptr;
+
     uint n=0,k=0;
 
  /* Clases*/
@@ -33,7 +33,6 @@ int main() {
         {"4", 2, new sInscripciones[2]{{"1", 1231242321}, {"20", 1231242322}}}
     };
 */
-
 
     sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
@@ -58,13 +57,13 @@ cout<<"--------NORMAL-----------"<<endl;
     tam--;
 
 
-    imprimir(D,tam);
+    Imprimir(D,tam);
 
 
  cout<<endl<<"-----Reserva (los 0 son basuraaa)-----------"<<endl;
 
   ReservaClase(D,cliente,clase);
-  imprimir(D,tam);
+  Imprimir(D,tam);
 
 
 cout<<endl<<"-----Funcion fallas en la inscripcion-----------"<<endl;
@@ -79,12 +78,12 @@ cout<< FallasInscripcion(D[3])<<endl;
  /* Asistencia */
 
  archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
- EscribirAsistenciaArchivo(D,archivo_asistencia,tam);
+ EscribirArchivoBIN(D,archivo_asistencia,tam);
  archivo_asistencia.close();
 
 
  texto.open("ReservasValidas.txt");
- EscribirAsistenciaArchivo(D,texto,tam);
+ EscribirArchivoTXT(D,texto,tam);
  texto.close();
 /* ifstream infile("asistencias_1697673600000.dat", ios::binary);
  if (!infile.is_open()) {
@@ -100,11 +99,12 @@ cout<< FallasInscripcion(D[3])<<endl;
  infile.close();
 
  for(uint i=0;i<1024;i++)
-        cout<< buffer[i];
+        cout<< buffer[i];*/
 
 
-*/
-    delete []D;
+
+
+    delete[]D;
     delete[]asistencia;
     delete[]cliente;
     delete[]clase;
