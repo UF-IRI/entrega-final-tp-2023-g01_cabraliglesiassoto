@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
 
-/*DECLARO VARIABLES */
+/*DECLARO VARIABLES
 
     ifstream archivo_clase,archivo_cliente;
     ofstream archivo_asistencia,texto ;
@@ -13,17 +13,17 @@ int main() {
 
     uint n=0,k=0;
 
- /* Clases*/
+  Clases
     archivo_clase.open("iriClasesGYM.csv",ios::in);
     LeerClaseArchivo(archivo_clase,clase, n);
     archivo_clase.close();
 
-/* Clientes */
+ Clientes
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
     LeerClienteArchivo(cliente,archivo_cliente, k);
     archivo_cliente.close();
 
-
+*/
  /*Pruebas*/
 
 /*   sAsistencia D[4] = {
@@ -33,8 +33,7 @@ int main() {
         {"4", 2, new sInscripciones[2]{{"1", 1231242321}, {"20", 1231242322}}}
     };
 */
-
-    sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
+ /*    sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
     sInscripciones inscripciones3[3] = {{"8", 1231242321}, {"1", 1231242321}, {"8", 1231242321}};
     sInscripciones inscripciones4[2] = {{"10", 1231242321}, {"15", 1231242322}};
@@ -56,7 +55,6 @@ cout<<"--------NORMAL-----------"<<endl;
     }
     tam--;
 
-
     Imprimir(D,tam);
 
 
@@ -66,16 +64,9 @@ cout<<"--------NORMAL-----------"<<endl;
   Imprimir(D,tam);
 
 
-cout<<endl<<"-----Funcion fallas en la inscripcion-----------"<<endl;
-cout<< FallasInscripcion(D[0])<<endl;
-cout<<FallasInscripcion(D[1])<<endl;
-cout<< FallasInscripcion(D[2])<<endl;
-cout<< FallasInscripcion(D[3])<<endl;
+cout<<endl<<"-----Archivo binario----------"<<endl;
 
- cout<<endl<<"-----Archivo binario----------"<<endl;
-
-
- /* Asistencia */
+  Asistencia
 
  archivo_asistencia.open("asistencias_1697673600000.dat", ios::binary);
  EscribirArchivoBIN(D,archivo_asistencia,tam);
@@ -85,23 +76,6 @@ cout<< FallasInscripcion(D[3])<<endl;
  texto.open("ReservasValidas.txt");
  EscribirArchivoTXT(D,texto,tam);
  texto.close();
-/* ifstream infile("asistencias_1697673600000.dat", ios::binary);
- if (!infile.is_open()) {
-        cout << "Error opening binary file" << endl;
-        return 1;
- }
-
- char buffer[1024];
- while (infile.good()) {
-        infile.read(buffer, sizeof(buffer));
- }
-
- infile.close();
-
- for(uint i=0;i<1024;i++)
-        cout<< buffer[i];*/
-
-
 
 
     delete[]D;
@@ -112,16 +86,16 @@ cout<< FallasInscripcion(D[3])<<endl;
     return 0;
 
     }
-
-//cout<<"cliente"<<sizeof(struct Cliente)<<endl;
-//printCliente(cliente);
-// cout<<"CANTIDAD DE CLASES supuestamente es 60 pero da =="<<sizeof(struct Clases)<<endl;
-// el archivo me lee 12 posiciones mas. Problemas con el archivo !
-//printClase(clase);
+*/
 
 
 /*
 
+cout<<endl<<"-----Funcion fallas en la inscripcion-----------"<<endl;
+cout<< FallasInscripcion(D[0])<<endl;
+cout<<FallasInscripcion(D[1])<<endl;
+cout<< FallasInscripcion(D[2])<<endl;
+cout<< FallasInscripcion(D[3])<<endl;
  cout<<"--------NO REPETIDO-----------"<<endl;
 
     ControlRepetidos(D);
@@ -135,3 +109,6 @@ cout<< FallasInscripcion(D[3])<<endl;
 
 
 */
+
+return 0;
+}

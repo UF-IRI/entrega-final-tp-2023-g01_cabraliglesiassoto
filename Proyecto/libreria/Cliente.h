@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream> // hacer variable tipo
 #include <iostream>
+#include <ctime>
 
 typedef unsigned int uint;
 using namespace std;
@@ -25,10 +26,14 @@ struct Cliente {
 
     //Archivo Cliente
 
-int LeerClienteArchivo(sCliente *cliente, ifstream Archivo); // Leo y lleno struct, aplicarun random para asistencia,cancelac y ausenc
-void resize_cliente (sCliente *& vector, int &N);
+int LeerClienteArchivo(sCliente *&cliente, ifstream &Archivo, uint &n); // Leo y lleno struct, aplicarun random para asistencia,cancelac y ausenc
+void resize_cliente (sCliente *& cliente, uint &n);
 
     // Otras funciones
+
 bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve falso
-    //void ControlSaldo(int saldo);
+uint stringtouint(string texto);
+void printCliente(sCliente *&cliente);
+
+
 #endif

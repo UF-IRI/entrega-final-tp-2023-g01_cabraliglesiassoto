@@ -1,75 +1,100 @@
 #include "Cliente.h"
-#include <iostream>
-#include <time.h>
-#include <fstream>
-#include <sstream>
 
-int LeerClienteArchivo(sCliente *&cliente, ifstream Archivo){
+bool ControlEstado(sCliente *cliente){
 
-    int N=1;
-    char coma=',';
+
+    if( cliente->saldo >=0)
+    {return true;}
+
+    else
+    {return false;}
+
+
+}
+
+int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
+
     stringstream ss;
-    string primera_linea, aux,aux_nombre,aux_id,aux_apellido, aux_mail,aux_fechanc, aux_telefono, aux_saldo;
+    string primera_linea, linea;
+    char coma=',';
 
-
-//    Archivo.open(filename);
-
-
-    if(!Archivo.is_open())
-    {
-        cout<<"Error al abrir archivo" <<endl;
-        return -1;
+    if(!archivo.is_open()) {
+        cout<<"Error al abrir archivo " <<endl;
+        return 1;
     }
 
-    getline(Archivo,primera_linea);
+    getline(archivo,primera_linea);
+    while(!archivo.eof()&& getline(archivo,linea)){
 
-    while(Archivo){
+        ss.clear();
+        ss<<linea;
+        resize_cliente(cliente,n);
 
-        getline(ss,aux);
-        ss<<aux;
+        getline(ss,linea,coma);
+        cliente[n-1].id_cliente=linea;
 
-        getline(ss,aux_id,coma);
-        cliente[N-1].id_cliente=aux_id;
+        getline(ss,linea,coma);
+        cliente[n-1].Nombre=linea;
 
-        getline(ss,aux_nombre,coma);
-        cliente[N-1].Nombre=aux_nombre;
+        getline(ss,linea,coma);
+        cliente[n-1].Apellido=linea;
 
-        getline(ss,aux_apellido,coma);
-        cliente[N-1].Apellido=aux_apellido;
+        getline(ss,linea,coma);
+        cliente[n-1].mail=linea;
 
-        getline(ss,aux_mail,coma);
-        cliente[N-1].mail=aux_mail;
+        getline(ss,linea,coma);
+        cliente[n-1].telefono=linea;
 
-        getline(ss,aux_telefono,coma);
-        cliente[N-1].telefono=aux_telefono;
+        getline(ss,linea,coma);
+        cliente[n-1].fechaNacimiento=linea;
 
-        getline(ss,aux_fechanc,coma);
-        cliente[N-1].fechaNacimiento=aux_fechanc;
-
-        getline(ss,aux_saldo);
-        cliente[N-1].saldo= stoi(aux_saldo);
-
-
-       // aplicarun random para asistencia,cancelac y ausenc
-
-        resize_cliente(cliente,N);
+        getline(ss,linea);
+        cliente[n-1].saldo= stoi(linea);
 
     }
 
-    Archivo.close();
     return 0;
-
-
-
 }
 
-void resize_cliente (sCliente *& vector, int &N){
-    N=(N)+1;
-    sCliente *aux= new sCliente[N];
-    for (int i=0; i< N-1; i++){
-        aux [i]=vector[i];
+void resize_cliente (sCliente *& cliente, uint &n){
+    if(cliente==nullptr){
+        if(n==0){
+            cliente = new sCliente[++n];
+        }
+        return;
     }
-    delete[] vector;
-    vector = aux;
+
+    sCliente* aux = new sCliente[++n];
+
+    for(uint i = 0; i < n-1; i++)
+        aux[i] = cliente[i];
+
+    delete[] cliente;
+    cliente= aux;
+
 }
 
+uint stringtouint(string texto)
+{
+
+    uint resultado=0;
+    for(uint i=0; i< texto.length(); i++){
+
+
+        if(texto[i]>='0' && texto[i]<= '9')
+            resultado=resultado *10 + (texto[i]-'0');
+
+    }
+
+    return resultado;
+
+}
+
+
+void printCliente(sCliente *&cliente){
+    size_t numCliente =  sizeof(struct Cliente);
+    for(uint i=0;i<numCliente ;i++)
+        cout<< cliente[i].id_cliente<<' '<< cliente[i].saldo <<endl;
+
+
+}

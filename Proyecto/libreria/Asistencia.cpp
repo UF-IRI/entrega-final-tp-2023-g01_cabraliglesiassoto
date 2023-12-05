@@ -1,20 +1,26 @@
 #include "Asistencia.h"
 
 
-void EscribirArchivoBIN(sAsistencia *&A, ofstream &archibinwr,uint cant_asistencia){
+void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant_asistencia){
 
 
     if (archibinwr.is_open()) {
-         for (uint i=0; i<cant_asistencia; i++) {
+
+            for( uint i=0;i<cant_asistencia;i++)
+            {
+                sAsistencia *A= &Asistencia[i];
+                if(A->id_cliente !="0" && ( A->cant_inscripcion - FallasInscripcion(Asistencia[i]))>0){
+
+                    archibinwr.write((char*)&A[i].id_cliente, sizeof(string));
+                    archibinwr.write((char*)&A[i].cant_inscripcion, sizeof(uint));
+
+                    for(uint j = 0; j < A[i].cant_inscripcion; j++){
+                      if(A->inscripciones[j].id_clase!= "0")
+                       archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
 
 
-
-            archibinwr.write((char*)&A[i].id_cliente, sizeof(string));
-            archibinwr.write((char*)&A[i].cant_inscripcion, sizeof(uint));
-
-            for(uint j = 0; j < A[i].cant_inscripcion; j++)
-               archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
-
+                }
+            }
         }
     }
 }
@@ -185,28 +191,6 @@ void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia
          }
 }
 
-
-
-void ControlFecha(sAsistencia *&asist,sClases *clase,uint cant_asistencia){
-// id 1 se anota a las 23 y id2 se anota a las 20 , tiene prioridad el 2do
-
-         tm estructura = FloattoHora(clase->horario);
-
-
-   /*      for (uint i = 0; i < cant_asistencia; i++) {
-            sAsistencia *asist = &asistencia[i];
-            sInscripciones *inscripciones = asist->inscripciones;
-
-            for (uint j = 0; j < asist->cant_inscripcion; j++) {
-
-                compararhora=difftime(asist->inscripciones[j].fecha,estructura);
-
-
-
-            }
-         }
-*/
-}
 
 
 

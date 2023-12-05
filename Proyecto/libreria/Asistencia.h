@@ -37,7 +37,7 @@ void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
 void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
 void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
 int FallasInscripcion(sAsistencia D);//E
-void ControlFecha(sAsistencia *&asist,sClases *clase);//F
+
 
 
 /* A- Controla clase repetidas DE UN CLIENTE */
