@@ -10,5 +10,6 @@ TEST_CASE("Funciones Buscar Horario ","BH")
     clase[3]={"12","Pilates",8.0,pilates,0};
     clase[4]={"15","Pilates",12.0,pilates,0};
     REQUIRE (BuscarHorario("1",clase) == 8.0);
+    REQUIRE (BuscarHorario("10",clase)==16.0);
     delete [] clase;
 }
