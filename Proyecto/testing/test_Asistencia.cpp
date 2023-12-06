@@ -1,10 +1,10 @@
-#include "Asistencia.h"
-#include <catch2/catch.hpp>
 
+#include <catch2/catch.hpp>
+#include "Asistencia.h"
 
 TEST_CASE("Reserva")
 {
-/*
+
     ifstream archivo_clase,archivo_cliente;
     ofstream archivo_asistencia,texto ;
     sClases* clase = nullptr;
@@ -45,21 +45,21 @@ TEST_CASE("Reserva")
     SECTION("ControlRepetidos"){
 
         ControlRepetidos(D,tam);
-        REQUIRE(D[2].id_cliente=="0");
+        REQUIRE(D[3].inscripciones[2].fecha==0);
 
     }
 
     SECTION("ControlHorario"){
 
         ControlHorario(D,clase,tam);
-        REQUIRE(D[0].inscripciones[2]=="0");
+        REQUIRE(D[0].inscripciones[1].id_clase=="0");
     }
 
 
     SECTION("ControlCupo"){
 
         ControlCupo(D,clase,tam);
-        REQUIRE(D[3].inscripciones[2]=="0");
+        REQUIRE(D[3].inscripciones[2].id_clase=="0");
     }
 
 
@@ -78,7 +78,7 @@ TEST_CASE("Reserva")
 
     delete []clase;
     delete[]cliente;
-    delete []D;*/
+    delete []D;
 
 }
 
