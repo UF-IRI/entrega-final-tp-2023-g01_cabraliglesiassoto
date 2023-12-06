@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv) {
 
-
+/*
     ifstream archivo_clase,archivo_cliente;
     ofstream archivo_asistencia,texto ;
     sClases* clase = nullptr;
@@ -13,16 +13,16 @@ int main(int argc, char** argv) {
 
     uint n=0,k=0;
 
-    /* Clases*/
+     Clases
     archivo_clase.open("iriClasesGYM.csv",ios::in);
     LeerClaseArchivo(archivo_clase,clase, n);
-    archivo_clase.close();
+    archivo_clase.close();*/
 
-    /* Clientes */
+    /* Clientes
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
     LeerClienteArchivo(cliente,archivo_cliente, k);
     archivo_cliente.close();
-
+*/
 
     sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
@@ -38,8 +38,8 @@ int main(int argc, char** argv) {
   //  cout<<"hola"<<endl;
 
     delete[]D;
-    delete[]cliente;
-    delete[]clase;
+  //  delete[]cliente;
+  //  delete[]clase;
 
     return Catch::Session().run(argc, argv);
 }

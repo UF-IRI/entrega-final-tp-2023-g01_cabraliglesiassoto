@@ -12,10 +12,10 @@ isEmpty(CATCH_INCLUDE_DIR): {
 }
 
 SOURCES += \
-    Asistencia.cpp \
-    Clases.cpp \
-    Cliente.cpp \
     main.cpp \
+    test_Asistencia.cpp \
+    test_Clases.cpp \
+    test_Cliente.cpp \
     tst_proyecto.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../libreria/release/ -llibreria
