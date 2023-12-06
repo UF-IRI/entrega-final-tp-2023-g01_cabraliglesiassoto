@@ -16,7 +16,7 @@ struct Cliente {
 
     string id_cliente;
     string Nombre,Apellido,mail,telefono,fechaNacimiento;
-    uint cant_asistencia,cant_cancel,cant_aus;
+    //uint cant_asistencia,cant_cancel,cant_aus;
     int saldo;
     //e_membresia membresia;
 
