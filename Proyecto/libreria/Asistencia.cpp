@@ -45,6 +45,7 @@ void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint can
     }
 }
 
+
 void resize_asistencia(sAsistencia *&asist,uint &n){
 
     if(asist==nullptr){
@@ -81,6 +82,7 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n){
     inscrip= aux;
 }
 
+
 void ReservaClase(sAsistencia *&asist, sCliente *cliente ,sClases *clase){
 
     uint tam=0;
@@ -95,6 +97,8 @@ ControlRepetidosyHorario(asist,clase,tam);// uno dos funciones pq sino mi pc mue
 ControlCupo(asist,clase,tam);
 
 }
+
+
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam){
 
 ControlHorario(asist,clase,tam);
@@ -118,6 +122,7 @@ for(uint i=0;i<cant_asist;i++){
          }
     }
 }
+
 
 void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia)
 {
@@ -195,6 +200,7 @@ int FallasInscripcion(sAsistencia D){
          return  cont;
 
 }
+
 
 void imprimir(sAsistencia *D,uint num){
 

@@ -53,7 +53,6 @@ TEST_CASE("Reserva")
     delete []D;
 
 }*/
-/*
 TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
 {
 
@@ -114,4 +113,4 @@ TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
     delete [] clase;
     delete [] cliente;
 }
-*/
+
