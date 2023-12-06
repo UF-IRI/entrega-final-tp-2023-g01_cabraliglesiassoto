@@ -1,7 +1,6 @@
 #ifndef ASISTENCIA_H
 #define ASISTENCIA_H
-#include <Cliente.h>
-#include <Clases.h>
+#include "Clases.h"
 #include <ctime>
 
 struct Inscripciones {

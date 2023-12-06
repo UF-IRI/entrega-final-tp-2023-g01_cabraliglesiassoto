@@ -32,7 +32,7 @@ void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint can
            sAsistencia *a= &Asistencias[i];
             if(a->id_cliente !="0" && ( a->cant_inscripcion - FallasInscripcion(Asistencias[i]))>0){
 
-               archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(Asistencias[i])<< "{";
+               archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(Asistencias[i])<< ",{";
 
                for(uint k=0;k<a->cant_inscripcion;k++ ){
                    if(a->inscripciones[k].id_clase!= "0")

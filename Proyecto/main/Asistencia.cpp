@@ -1,25 +1,32 @@
 #include "Asistencia.h"
 
 
-void EscribirArchivoBIN(sAsistencia *&A, ofstream &archibinwr,uint cant_asistencia){
-
+void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant_asistencia){
+ /*Guardo en archivo binario, la structura sin ceros */
 
     if (archibinwr.is_open()) {
-         for (uint i=0; i<cant_asistencia; i++) {
 
+            for( uint i=0;i<cant_asistencia;i++)
+            {
+                sAsistencia *A= &Asistencia[i];
+                if(A->id_cliente !="0" && ( A->cant_inscripcion - FallasInscripcion(Asistencia[i]))>0){
 
+                    archibinwr.write((char*)&A->id_cliente, sizeof(string));
+                    archibinwr.write((char*)&A->cant_inscripcion, sizeof(uint));
 
-            archibinwr.write((char*)&A[i].id_cliente, sizeof(string));
-            archibinwr.write((char*)&A[i].cant_inscripcion, sizeof(uint));
+                    for(uint j = 0; j < A->cant_inscripcion; j++){
+                     if(A->inscripciones[j].id_clase!= "0")
 
-            for(uint j = 0; j < A[i].cant_inscripcion; j++)
-               archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
+                            archibinwr.write((char*)&A->inscripciones[j],sizeof(sInscripciones));
 
+                }
+            }
         }
     }
+    else { cout<<"error abrir archivo "<<endl;}
 }
 void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia){
-
+/* Lo mismo que el binario, lo hicimos para poder controlarlo */
     if (archibinwr.is_open()) {
 
         for( uint i=0;i<cant_asistencia;i++)
@@ -27,7 +34,7 @@ void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint can
            sAsistencia *a= &Asistencias[i];
             if(a->id_cliente !="0" && ( a->cant_inscripcion - FallasInscripcion(Asistencias[i]))>0){
 
-               archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(Asistencias[i])<< "{";
+               archibinwr << a->id_cliente<<"," << a->cant_inscripcion-FallasInscripcion(Asistencias[i])<< ",{";
 
                for(uint k=0;k<a->cant_inscripcion;k++ ){
                    if(a->inscripciones[k].id_clase!= "0")
@@ -38,6 +45,7 @@ void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint can
             }
         }
     }
+    else { cout<<"error abrir archivo "<<endl;}
 }
 
 
@@ -94,7 +102,6 @@ ControlCupo(asist,clase,tam);
 }
 
 
-
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam){
 
 ControlHorario(asist,clase,tam);
@@ -102,13 +109,31 @@ ControlRepetidos(asist,tam);
 
 }
 
-void ControlHorario(sAsistencia *&a, sClases *clase,uint cant_asistencia)
+void ControlRepetidos(sAsistencia *&asist,uint cant_asist){
+
+for(uint i=0;i<cant_asist;i++){
+
+         for(uint j=0;j<asist[i].cant_inscripcion;j++)
+         {
+            for(uint m=0;m<asist[i].cant_inscripcion;m++){
+
+            if(asist[i].inscripciones[j].id_clase == asist[i].inscripciones[m].id_clase && j!=m){
+
+                   asist[i].inscripciones[m].id_clase="0";  // llenamos de 0
+            }
+            }
+         }
+    }
+}
+
+
+void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia)
 {
 
 
 for (uint i = 0; i < cant_asistencia; i++) {
 
-sAsistencia *asist = &a[i];
+sAsistencia *asist = &asistencia[i];
 sInscripciones *inscripciones = asist->inscripciones;
 uint cant_inscripcion = asist->cant_inscripcion;
 
@@ -129,39 +154,6 @@ for (uint j = 0; j < cant_inscripcion; j++) {
 
    }
 }
-}
-
-void ControlRepetidos(sAsistencia *&asist,uint cant_asist){
-
-    for(uint i=0;i<cant_asist;i++){
-
-        for(uint j=0;j<asist[i].cant_inscripcion;j++)
-        {
-            for(uint m=0;m<asist[i].cant_inscripcion;m++){
-
-                if(asist[i].inscripciones[j].id_clase == asist[i].inscripciones[m].id_clase && j!=m){
-
-                    asist[i].inscripciones[m].id_clase="0";  // llenamos de 0
-                }
-            }
-        }
-
-    }
-}
-
-void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asist){
-
-    for(uint i=0;i<cant_asist;i++){
-
-         size_t numCliente =  sizeof(struct Cliente);
-         for(uint j=0;j<numCliente;j++)
-         {
-            if(asist[i].id_cliente == cliente[j].id_cliente && cliente[j].saldo <0 )
-
-                // el cliente no tiene la cuota al dia y no puede reservar
-                asist[i].id_cliente="0";
-         }
-    }
 }
 
 void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia){
@@ -185,54 +177,38 @@ void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia
          }
 }
 
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asist){
 
+         for(uint i=0;i<cant_asist;i++){
 
-void ControlFecha(sAsistencia *&asist,sClases *clase,uint cant_asistencia){
-// id 1 se anota a las 23 y id2 se anota a las 20 , tiene prioridad el 2do
+            size_t numCliente =  sizeof(struct Cliente);
+            for(uint j=0;j<numCliente;j++)
+            {
+                if(asist[i].id_cliente == cliente[j].id_cliente && cliente[j].saldo <0 )
 
-         tm estructura = FloattoHora(clase->horario);
-
-
-   /*      for (uint i = 0; i < cant_asistencia; i++) {
-            sAsistencia *asist = &asistencia[i];
-            sInscripciones *inscripciones = asist->inscripciones;
-
-            for (uint j = 0; j < asist->cant_inscripcion; j++) {
-
-                compararhora=difftime(asist->inscripciones[j].fecha,estructura);
-
-
-
+                // el cliente no tiene la cuota al dia y no puede reservar
+                asist[i].id_cliente="0";
             }
          }
-*/
+}
+
+int FallasInscripcion(sAsistencia D){
+         uint cont=0;
+         for(uint m = 0; m < D.cant_inscripcion; m++){
+
+            if(D.inscripciones[m].id_clase == "0") // la inscripcion no valida
+                cont++;
+         }
+
+         return  cont;
+
 }
 
 
 
-
-void imprimir(sAsistencia *D,uint num){
-
-
-         cout<<"tamanio asistencia"<<num << endl;
-
-         for(uint i=0;i<num;i++){
-
-            cout<<"id:" <<D[i].id_cliente<< "  cant: "<< D[i].cant_inscripcion <<endl;
-            cout<< "     Inscripciones:";
-            for(uint m=0;m<D[i].cant_inscripcion; m++)
-            {
-
-                cout<<" "<< D[i].inscripciones[m].id_clase<< "," ;
-
-            }
-            cout<< " "<<endl;
-         }
-    }
-
 void Imprimir(sAsistencia *D,uint num){
 
-    cout<<"tamanio asistencia"<<num << endl;
+    cout<<"Tamanio asistencia"<<num << endl;
 
     for(uint i=0;i<num;i++){
 
@@ -249,19 +225,6 @@ void Imprimir(sAsistencia *D,uint num){
          }
         cout<<endl;
         }
-}
-
-
-int FallasInscripcion(sAsistencia D){
-         uint cont=0;
-         for(uint m = 0; m < D.cant_inscripcion; m++){
-
-            if(D.inscripciones[m].id_clase == "0") // la inscripcion no valida
-                cont++;
-         }
-
-         return  cont;
-
 }
 
 

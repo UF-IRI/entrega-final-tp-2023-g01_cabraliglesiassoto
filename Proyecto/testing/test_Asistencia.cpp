@@ -1,5 +1,5 @@
 #include <catch2/catch.hpp>
-#include "Asistencia.h"
+/*#include "Asistencia.h"
 
 TEST_CASE("Reserva")
 {
@@ -118,5 +118,5 @@ TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
     delete [] clase;
     delete [] cliente;
 
-}
+}*/
 

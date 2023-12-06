@@ -33,7 +33,7 @@ void resize_cliente (sCliente *& cliente, uint &n);
 
 bool ControlEstado(sCliente *cliente); // si el saldo en negativo, devuelve falso
 uint stringtouint(string texto);
-void printCliente(sCliente *&cliente);
+void printCliente(sCliente *&cliente,uint n_cliente);
 
 
 #endif

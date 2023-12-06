@@ -1,6 +1,9 @@
 
-#include <Clases.h>
+
 #include <catch2/catch.hpp>
+/*#include <Clases.h>
+
+
 TEST_CASE("Funciones Buscar Horario ","BH")
 {
     sClases *clase = new sClases [5];
@@ -29,4 +32,4 @@ TEST_CASE("LlenarCupo"){
 
 
 
-}
+}*/

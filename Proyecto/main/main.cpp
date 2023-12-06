@@ -4,7 +4,7 @@ using namespace std;
 int main() {
  // FUNCIONA TODO OK, ABRE Y ESCRIBE ARCHIVOS , SE MODIFICA STRUCT CORRECTAMENTE
 
-/*DECLARO VARIABLES
+//DECLARO VARIABLES
 
 
     ifstream archivo_clase,archivo_cliente;
@@ -12,21 +12,21 @@ int main() {
     sClases* clase = nullptr;
     sCliente* cliente = nullptr;
     sAsistencia *asistencia=nullptr;
-    uint n=0,k=0;
+    uint n_clase=0,n_cliente=0;
 
   //Clases
     archivo_clase.open("iriClasesGYM.csv",ios::in);
-    LeerClaseArchivo(archivo_clase,clase, n);
+    LeerClaseArchivo(archivo_clase,clase, n_clase);
     archivo_clase.close();
 
   //Clientes
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
-    LeerClienteArchivo(cliente,archivo_cliente, k);
+    LeerClienteArchivo(cliente,archivo_cliente, n_cliente);
     archivo_cliente.close();
 
-*/
+
  /*Pruebas*/
- /* sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
+  sInscripciones inscripciones1[2] = {{"1", 109029092}, {"12", 109029323}};
     sInscripciones inscripciones2[1] = {{"1", 132322131}};
     sInscripciones inscripciones3[3] = {{"8", 1231242321}, {"1", 1231242321}, {"8", 1231242321}};
     sInscripciones inscripciones4[2] = {{"10", 1231242321}, {"15", 1231242322}};
@@ -42,13 +42,21 @@ int main() {
    uint tam=4;
 
 cout<<"--------NORMAL-----------"<<endl;
-
+   // printClase(clase,n_clase);
+   //printCliente(cliente,n_cliente);
     Imprimir(D,tam);
 
 
 cout<<"-----Reserva (los 0 son basuraaa)-----"<<endl;
 
-  ReservaClase(D,cliente,clase);
+ // ReservaClase(D,cliente,clase);
+ ControlSaldo(D,cliente,tam);
+ ControlRepetidos(D,tam);
+ ControlHorario(D,clase,tam);
+// ControlRepetidosyHorario(D,clase,tam);
+ ControlCupo(D,clase,tam);
+
+ cout<<"hola"<<endl;
   Imprimir(D,tam);
 
 
@@ -72,20 +80,20 @@ cout<< FallasInscripcion(D[3])<<endl;
 
 cout<<"--------NO REPETIDO-----------"<<endl;
 
-    ControlRepetidos(D);
-    imprimir(D);
+    ControlRepetidos(D,tam);
+    Imprimir(D,tam);
 
 cout<<"--------SALDO NEG-----------"<<endl;
 
-    ControlSaldo(D,cliente);
-    imprimir(D);
+    ControlSaldo(D,cliente,tam);
+    Imprimir(D,tam);
 
     delete[]D;
     delete[]asistencia;
     delete[]cliente;
     delete[]clase;
 
-*/
+
 
 return 0;
 }
