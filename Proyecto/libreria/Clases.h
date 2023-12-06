@@ -7,7 +7,7 @@ typedef unsigned int uint;
 
 enum sala {bicis,siri,camillas,gim1,gim2,box};
 typedef enum sala eSala;
-enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30,musculacion=15};
+enum cupo_max { spinn=45,yoga= 25, pilates=15, stretching=40,zumba= 50 ,boxeo=30,musculacion=15, vacio=0};
 typedef enum cupo_max eCupo_max;
 
 

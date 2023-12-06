@@ -5,10 +5,8 @@
 TEST_CASE("Control Saldo","hola"){
 
 
-
     Cliente *cliente = new Cliente;
 
-    // Asignar valores al cliente
     cliente->id_cliente = "2";
     cliente->Nombre = "Emilio";
     cliente->Apellido = "Romero";

@@ -84,14 +84,19 @@ eCupo_max LlenarCupo(string clase_nombre){
 
 float BuscarHorario(string id_clase, sClases *clase){
 
+    float hora=0;
+
     size_t numClase =  sizeof(struct Clases);
     for(uint i=0;i<numClase ;i++)
     { if(id_clase == clase[i].id_clase)
-        {return clase[i].horario;}
-       else
-        { return 0;}
+        {hora= clase[i].horario;}
+
 
     }
+
+
+    return hora;
+
 }
 
 tm FloattoHora(float hora) {
