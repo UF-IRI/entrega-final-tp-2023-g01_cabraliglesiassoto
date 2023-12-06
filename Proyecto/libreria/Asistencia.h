@@ -34,8 +34,8 @@ void ReservaClase(sAsistencia *&asist, sCliente *cliente,  sClases *clase);
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam);
 void ControlRepetidos(sAsistencia *&asist,uint cant_asist); //A
 void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia);//B
-void ControlCupo (sAsistencia *&asistencia, sClases *clase,uint cant_asist);//C
-void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asistencia);//D
+void ControlCupo (sAsistencia *&asistencia, sClases *clase,uint cant_asistencia);//C
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asist);//D
 int FallasInscripcion(sAsistencia D);//E
 
 
