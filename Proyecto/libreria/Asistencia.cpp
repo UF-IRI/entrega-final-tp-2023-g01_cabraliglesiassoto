@@ -2,7 +2,7 @@
 
 
 void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant_asistencia){
-
+ /*Guardo en archivo binario, la structura sin ceros */
 
     if (archibinwr.is_open()) {
 
@@ -24,7 +24,7 @@ void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant
     }
 }
 void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia){
-
+/* Lo mismo que el binario, lo hicimos para poder controlarlo */
     if (archibinwr.is_open()) {
 
         for( uint i=0;i<cant_asistencia;i++)
@@ -106,7 +106,6 @@ ControlRepetidos(asist,tam);
 
 }
 
-
 void ControlRepetidos(sAsistencia *&asist,uint cant_asist){
 
 for(uint i=0;i<cant_asist;i++){
@@ -123,7 +122,6 @@ for(uint i=0;i<cant_asist;i++){
          }
     }
 }
-
 
 
 void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia)

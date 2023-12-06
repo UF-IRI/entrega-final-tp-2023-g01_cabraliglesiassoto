@@ -9,7 +9,6 @@ bool ControlEstado(sCliente *cliente){
     else
     {return false;}
 
-
 }
 
 int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n){
@@ -85,9 +84,7 @@ uint stringtouint(string texto)
             resultado=resultado *10 + (texto[i]-'0');
 
     }
-
     return resultado;
-
 }
 
 

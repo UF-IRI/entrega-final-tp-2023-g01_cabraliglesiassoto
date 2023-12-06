@@ -26,7 +26,7 @@ struct Cliente {
 
     //Archivo Cliente
 
-int LeerClienteArchivo(sCliente *&cliente, ifstream &Archivo, uint &n); // Leo y lleno struct, aplicarun random para asistencia,cancelac y ausenc
+int LeerClienteArchivo(sCliente *&cliente, ifstream &archivo, uint &n); // Leo y lleno struct, aplicarun random para asistencia,cancelac y ausenc
 void resize_cliente (sCliente *& cliente, uint &n);
 
     // Otras funciones

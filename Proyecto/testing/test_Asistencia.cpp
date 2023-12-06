@@ -53,9 +53,8 @@ TEST_CASE("Reserva")
     delete []D;
 
 }*/
-TEST_CASE("Funciones Auxiliares de Reserva")
+TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
 {
-
 
    sClases *clase = new sClases [5];
    clase[0]={"1","Spinning",8.0,spinn,0};
@@ -109,7 +108,6 @@ TEST_CASE("Funciones Auxiliares de Reserva")
         ControlCupo(D,clase,tam);
         CHECK(D[3].inscripciones[2].id_clase=="0");
     }
-
 
     delete [] D;
     delete [] clase;
