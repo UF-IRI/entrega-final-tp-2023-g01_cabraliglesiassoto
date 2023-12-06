@@ -18,7 +18,6 @@ void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant
                       if(A->inscripciones[j].id_clase!= "0")
                        archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
 
-
                 }
             }
         }

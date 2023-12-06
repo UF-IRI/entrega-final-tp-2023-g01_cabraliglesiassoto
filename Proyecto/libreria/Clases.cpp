@@ -89,7 +89,7 @@ float BuscarHorario(string id_clase, sClases *clase){
     { if(id_clase == clase[i].id_clase)
         {return clase[i].horario;}
        else
-        { return 0.0;}
+        { return 0;}
 
     }
 }
