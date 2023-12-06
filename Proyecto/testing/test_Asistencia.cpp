@@ -1,12 +1,11 @@
-
 #include <catch2/catch.hpp>
 #include "Asistencia.h"
 
 TEST_CASE("Reserva")
 {
+// :-1: error: collect2.exe: error: ld returned 1 exit status  ?? borre todo y descargue de nuevo...
 
-
-/*    sClases *clase = new sClases [5];
+ sClases *clase = new sClases [5];
     clase[0]={"1","Spinning",8.0,spinn,0};
     clase[1]={"8","Yoga",11.0,yoga,0};
     clase[2]={"10","Yoga",16.0,yoga,0};
@@ -118,6 +117,6 @@ TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
     delete [] D;
     delete [] clase;
     delete [] cliente;
-*/
+
 }
 
