@@ -21,7 +21,7 @@ struct Asistencia {
 
 /* Devuelve un archivo con las asistencias validas en formato binario y txt (esto es para guiarnos nosotros)*/
 
-void EscribirArchivoBIN(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia);
+void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant_asistencia);
 void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia);
 
 void resize_asistencia(sAsistencia *&asist,uint &n);
@@ -29,13 +29,13 @@ void resize_inscriptos(sInscripciones *&inscrip ,uint &n);
 
 /* Reservas y auxiliares */
 
-void ReservaClase(sAsistencia *&asisten, sCliente *cliente,  sClases *clase);
+void ReservaClase(sAsistencia *&asist, sCliente *cliente,  sClases *clase);
 
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam);
-void ControlRepetidos(sAsistencia *&asist,uint tam); //A
-void ControlHorario(sAsistencia *&a, sClases *clase,uint tam);//B
-void ControlCupo (sAsistencia *&asist, sClases *clase,uint tam);//C
-void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint tam);//D
+void ControlRepetidos(sAsistencia *&asist,uint cant_asist); //A
+void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia);//B
+void ControlCupo (sAsistencia *&asistencia, sClases *clase,uint cant_asist);//C
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asistencia);//D
 int FallasInscripcion(sAsistencia D);//E
 
 
@@ -49,7 +49,7 @@ se haya inscripto primero(hora menor), a ese le dan prioridad de cupo */
 /*E- Indica cantidad de inscripciones fallidas de un solo cliente */
 /*F Dentro de Control Cupo, si excede cupomaximo, tienen prioridad los que se inscribieron antes :) */
 
-void ModificarStruct(sAsistencia *&asist, uint &tam);// hubo problemas al modificar struct.. (no lo pide)
+//void ModificarStruct(sAsistencia *&asist, uint &tam); hubo problemas al modificar struct.. (no lo pide)
 void imprimir(sAsistencia *D,uint num);
 void Imprimir(sAsistencia *D,uint num);
 #endif // ASISTENCIA_H

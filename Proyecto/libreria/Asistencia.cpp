@@ -100,7 +100,6 @@ ControlCupo(asist,clase,tam);
 }
 
 
-
 void ControlRepetidosyHorario(sAsistencia *&asist, sClases *clase,uint tam){
 
 ControlHorario(asist,clase,tam);
@@ -108,13 +107,33 @@ ControlRepetidos(asist,tam);
 
 }
 
-void ControlHorario(sAsistencia *&a, sClases *clase,uint cant_asistencia)
+
+void ControlRepetidos(sAsistencia *&asist,uint cant_asist){
+
+for(uint i=0;i<cant_asist;i++){
+
+         for(uint j=0;j<asist[i].cant_inscripcion;j++)
+         {
+            for(uint m=0;m<asist[i].cant_inscripcion;m++){
+
+            if(asist[i].inscripciones[j].id_clase == asist[i].inscripciones[m].id_clase && j!=m){
+
+                   asist[i].inscripciones[m].id_clase="0";  // llenamos de 0
+            }
+            }
+         }
+    }
+}
+
+
+
+void ControlHorario(sAsistencia *&asistencia, sClases *clase,uint cant_asistencia)
 {
 
 
 for (uint i = 0; i < cant_asistencia; i++) {
 
-sAsistencia *asist = &a[i];
+sAsistencia *asist = &asistencia[i];
 sInscripciones *inscripciones = asist->inscripciones;
 uint cant_inscripcion = asist->cant_inscripcion;
 
@@ -135,39 +154,6 @@ for (uint j = 0; j < cant_inscripcion; j++) {
 
    }
 }
-}
-
-void ControlRepetidos(sAsistencia *&asist,uint cant_asist){
-
-    for(uint i=0;i<cant_asist;i++){
-
-        for(uint j=0;j<asist[i].cant_inscripcion;j++)
-        {
-            for(uint m=0;m<asist[i].cant_inscripcion;m++){
-
-                if(asist[i].inscripciones[j].id_clase == asist[i].inscripciones[m].id_clase && j!=m){
-
-                    asist[i].inscripciones[m].id_clase="0";  // llenamos de 0
-                }
-            }
-        }
-
-    }
-}
-
-void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asist){
-
-    for(uint i=0;i<cant_asist;i++){
-
-         size_t numCliente =  sizeof(struct Cliente);
-         for(uint j=0;j<numCliente;j++)
-         {
-            if(asist[i].id_cliente == cliente[j].id_cliente && cliente[j].saldo <0 )
-
-                // el cliente no tiene la cuota al dia y no puede reservar
-                asist[i].id_cliente="0";
-         }
-    }
 }
 
 void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia){
@@ -191,8 +177,32 @@ void ControlCupo (sAsistencia *&asistencia, sClases *clase, uint cant_asistencia
          }
 }
 
+void ControlSaldo(sAsistencia *&asist, sCliente *cliente,uint cant_asist){
 
+         for(uint i=0;i<cant_asist;i++){
 
+            size_t numCliente =  sizeof(struct Cliente);
+            for(uint j=0;j<numCliente;j++)
+            {
+                if(asist[i].id_cliente == cliente[j].id_cliente && cliente[j].saldo <0 )
+
+                // el cliente no tiene la cuota al dia y no puede reservar
+                asist[i].id_cliente="0";
+            }
+         }
+}
+
+int FallasInscripcion(sAsistencia D){
+         uint cont=0;
+         for(uint m = 0; m < D.cant_inscripcion; m++){
+
+            if(D.inscripciones[m].id_clase == "0") // la inscripcion no valida
+                cont++;
+         }
+
+         return  cont;
+
+}
 
 
 void imprimir(sAsistencia *D,uint num){
@@ -233,19 +243,6 @@ void Imprimir(sAsistencia *D,uint num){
          }
         cout<<endl;
         }
-}
-
-
-int FallasInscripcion(sAsistencia D){
-         uint cont=0;
-         for(uint m = 0; m < D.cant_inscripcion; m++){
-
-            if(D.inscripciones[m].id_clase == "0") // la inscripcion no valida
-                cont++;
-         }
-
-         return  cont;
-
 }
 
 

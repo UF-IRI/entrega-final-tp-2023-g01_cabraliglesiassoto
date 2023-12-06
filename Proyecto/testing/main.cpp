@@ -13,18 +13,18 @@ int main(int argc, char** argv) {
 
     uint n=0,k=0;
 
-     Clases
+     //Clases
     archivo_clase.open("iriClasesGYM.csv",ios::in);
     LeerClaseArchivo(archivo_clase,clase, n);
-    archivo_clase.close();*/
+    archivo_clase.close();
 
-    /* Clientes
+    //Clientes
     archivo_cliente.open("iriClientesGYM.csv",ios::in);
     LeerClienteArchivo(cliente,archivo_cliente, k);
     archivo_cliente.close();
+
+
 */
-
-
   //  delete[]cliente;
   //  delete[]clase;
 
