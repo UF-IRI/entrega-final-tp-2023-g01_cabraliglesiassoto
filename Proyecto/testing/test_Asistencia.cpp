@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
-/*#include "Asistencia.h"
-
+#include "Asistencia.h"
+#include "Cliente.h"
 TEST_CASE("Reserva")
 {
 // :-1: error: collect2.exe: error: ld returned 1 exit status  ?? borre todo y descargue de nuevo...
@@ -42,13 +42,11 @@ TEST_CASE("Reserva")
 
     }
 
-
     SECTION("FallasInscripcion"){
         ReservaClase(D,cliente,clase);
         int falla=FallasInscripcion(D[3]);
         REQUIRE(falla==2);
     }
-
 
     delete []clase;
     delete[]cliente;
@@ -118,5 +116,5 @@ TEST_CASE("Funciones Auxiliares de Reserva","[fa]")
     delete [] clase;
     delete [] cliente;
 
-}*/
+}
 

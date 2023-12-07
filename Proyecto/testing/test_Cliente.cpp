@@ -1,6 +1,6 @@
 
 #include <catch2/catch.hpp>
-/*#include "Cliente.h"
+#include "Cliente.h"
 
 
 TEST_CASE("Control Saldo","hola"){
@@ -22,4 +22,4 @@ TEST_CASE("Control Saldo","hola"){
 
     delete cliente;
 }
-*/
+

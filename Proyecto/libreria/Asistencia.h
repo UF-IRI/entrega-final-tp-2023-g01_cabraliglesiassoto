@@ -49,6 +49,6 @@ se haya inscripto primero(hora menor), a ese le dan prioridad de cupo */
 /*F Dentro de Control Cupo, si excede cupomaximo, tienen prioridad los que se inscribieron antes :) */
 
 //void ModificarStruct(sAsistencia *&asist, uint &tam); hubo problemas al modificar struct.. (no lo pide)
-void imprimir(sAsistencia *D,uint num);
+
 void Imprimir(sAsistencia *D,uint num);
 #endif // ASISTENCIA_H

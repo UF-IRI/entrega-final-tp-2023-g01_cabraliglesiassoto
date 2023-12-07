@@ -11,17 +11,19 @@ void EscribirArchivoBIN(sAsistencia *&Asistencia, ofstream &archibinwr,uint cant
                 sAsistencia *A= &Asistencia[i];
                 if(A->id_cliente !="0" && ( A->cant_inscripcion - FallasInscripcion(Asistencia[i]))>0){
 
-                    archibinwr.write((char*)&A[i].id_cliente, sizeof(string));
-                    archibinwr.write((char*)&A[i].cant_inscripcion, sizeof(uint));
+                    archibinwr.write((char*)&A->id_cliente, sizeof(string));
+                    archibinwr.write((char*)&A->cant_inscripcion, sizeof(uint));
 
-                    for(uint j = 0; j < A[i].cant_inscripcion; j++){
-                      if(A->inscripciones[j].id_clase!= "0")
-                       archibinwr.write((char*)&A[i].inscripciones[j],sizeof(sInscripciones));
+                    for(uint j = 0; j < A->cant_inscripcion; j++){
+                     if(A->inscripciones[j].id_clase!= "0")
+
+                            archibinwr.write((char*)&A->inscripciones[j],sizeof(sInscripciones));
 
                 }
             }
         }
     }
+    else { cout<<"error abrir archivo "<<endl;}
 }
 void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint cant_asistencia){
 /* Lo mismo que el binario, lo hicimos para poder controlarlo */
@@ -43,6 +45,7 @@ void EscribirArchivoTXT(sAsistencia *&Asistencias, ofstream &archibinwr,uint can
             }
         }
     }
+    else { cout<<"error abrir archivo "<<endl;}
 }
 
 
@@ -202,28 +205,10 @@ int FallasInscripcion(sAsistencia D){
 }
 
 
-void imprimir(sAsistencia *D,uint num){
-
-
-         cout<<"tamanio asistencia"<<num << endl;
-
-         for(uint i=0;i<num;i++){
-
-            cout<<"id:" <<D[i].id_cliente<< "  cant: "<< D[i].cant_inscripcion <<endl;
-            cout<< "     Inscripciones:";
-            for(uint m=0;m<D[i].cant_inscripcion; m++)
-            {
-
-                cout<<" "<< D[i].inscripciones[m].id_clase<< "," ;
-
-            }
-            cout<< " "<<endl;
-         }
-    }
 
 void Imprimir(sAsistencia *D,uint num){
 
-    cout<<"tamanio asistencia"<<num << endl;
+    cout<<"Tamanio asistencia"<<num << endl;
 
     for(uint i=0;i<num;i++){
 

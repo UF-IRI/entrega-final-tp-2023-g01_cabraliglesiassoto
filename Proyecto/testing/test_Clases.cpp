@@ -1,7 +1,7 @@
 
 
 #include <catch2/catch.hpp>
-/*#include <Clases.h>
+#include <Clases.h>
 
 
 TEST_CASE("Funciones Buscar Horario ","BH")
@@ -30,6 +30,6 @@ TEST_CASE("LlenarCupo"){
     CHECK( LlenarCupo(clase->clase_nombre )== spinn);
 
 
+    delete [] clase;
 
-
-}*/
+}

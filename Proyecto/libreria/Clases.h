@@ -24,7 +24,7 @@ typedef enum cupo_max eCupo_max;
 // Archivos
 void resize_clases(sClases *& clase , uint &n );
 void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n); // leo archivo y lleno struct
-void printClase(sClases *&clases);
+void printClase(sClases *&clases, uint n_clase);
 eCupo_max LlenarCupo(string clase_nombre);
 float BuscarHorario(string id_clase,sClases *clase);
 tm FloattoHora(float hora);

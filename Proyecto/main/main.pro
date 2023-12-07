@@ -7,9 +7,6 @@ CONFIG += c++17 cmdline
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        Asistencia.cpp \
-        Clases.cpp \
-        Cliente.cpp \
         main.cpp
 
 
@@ -25,7 +22,4 @@ else:unix: LIBS += -L$$OUT_PWD/../libreria/ -llibreria
 INCLUDEPATH += $$PWD/../libreria
 DEPENDPATH += $$PWD/../libreria
 
-HEADERS += \
-    Asistencia.h \
-    Clases.h \
-    Cliente.h
+HEADERS +=

@@ -55,9 +55,9 @@ void LeerClaseArchivo(ifstream &archivo, sClases* &clase, uint &n){
 
 
 }
-void printClase(sClases *&clases){
-    size_t numClase =  sizeof(struct Clases)-12;
-    for(uint i=0;i<numClase;i++)
+void printClase(sClases *&clases, uint n_clase){
+
+    for(uint i=0;i<n_clase;i++)
     { cout<< clases[i].id_clase<<' '<< clases[i].horario<<' '<< clases[i].cupo_max <<endl;}
 
 }
